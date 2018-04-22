@@ -8,8 +8,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jikan is the unofficial MyAnimeList REST based API">
-    <meta name="author" content="Nekomata">    
+
+    <!-- SEO -->
+    <meta name="author" content="@irfanDahir">
+    <meta name="keywords" content="jikan, rest, php, api, myanimelist, free, open, source, 2017, 2018, 2019, anime, manga, people, characters, novels, manhua, manhwa, wrapper, ruby, python, restful">
+    <meta name="description" content="Jikan is an unofficial MyAnimeList REST based API">
+    <meta name="image" content="https://jikan.moe/assets/images/jikan.png">
+    <meta itemprop="name" content="Jikan - Unofficial MyAnimeList API">
+    <meta itemprop="description" content="Jikan is an unofficial MyAnimeList REST based API">
+    <meta itemprop="image" content="https://jikan.moe/assets/images/jikan.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jikan - FAQs<">
+    <meta name="twitter:description" content="Jikan is an unofficial MyAnimeList REST based API">
+    <meta name="twitter:creator" content="@irfanDahir">
+    <meta name="twitter:site" content="@irfanDahir">
+    <meta name="twitter:image:src" content="https://jikan.moe/assets/images/jikan.png">
+    <meta name="twitter:image:alt" content="Jikan.moe brand image">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="og:title" content="Jikan - FAQs<">
+    <meta name="og:description" content="Jikan is an unofficial MyAnimeList REST based API">
+    <meta name="og:image" content="https://jikan.moe/assets/images/jikan.png">
+    <meta name="og:url" content="https://jikan.moe">
+    <meta name="og:site_name" content="Jikan - Unofficial MyAnimeList API">
+    <meta name="og:locale" content="en_US">
+    <meta name="og:type" content="website">
+
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
     <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
@@ -68,7 +91,7 @@
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><span aria-hidden="true" class="icon icon_lifesaver"></span> FAQs</h1>
-                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: May 19th, 2017</div>
+                    <!-- <div class="meta"><i class="fa fa-clock-o"></i> Last updated: May 19th, 2017</div> -->
                 </div><!--//doc-header-->
                 <div class="doc-body">
                     <div class="doc-content">
@@ -77,19 +100,23 @@
                                 <h2 class="section-title">General</h2>
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> Are there any limits to the requests?</h3>
-                                    <div class="answer">You can make <code>2,000</code> requests per day. If you need more requests, <a href="mailto:admin@jikan.me">contact me</a>.</div>
-                                </div><!--//section-block-->
-                                <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> How many requests does extended data take?</h3>
-                                    <div class="answer">Each extended data takes 1 request apart from the parent request (e.g anime, manga)</div>
-                                </div><!--//section-block-->
-                                <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> When will the search request be added?</h3>
-                                    <div class="answer">My plans are to add that in the end. You can check the <a href="https://github.com/irfan-dahir/jikan/issues" target="_blank">issues</a> page to check which milestone version is assigned to it</div>
+                                    <div class="answer">You can make <code>5,000</code> <b>uncached</b> requests per day. Cached requests don't count!</div>
                                 </div><!--//section-block-->
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> How does Jikan work?</h3>
-                                    <div class="answer">Jikan works by scraping pages from MyAnimeList to parse the data you need. Why should you sidetrack your application to create an entire Scraper for it? Let Jikan do it for you!</div>
+                                    <div class="answer">Jikan works by scraping pages from MyAnimeList to parse the data you need.</div>
+                                </div><!--//section-block-->
+                                <div class="section-block">
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> Is this open source?</h3>
+                                    <div class="answer">Yes! From the source, to the REST API, to this website itself; everything is available on <a href="https://github.com/jikan-me" target="_blank">GitHub</a>.</div>
+                                </div><!--//section-block-->
+                                <div class="section-block">
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> Is this service free?</h3>
+                                    <div class="answer"><b>100%</b>.</div>
+                                </div><!--//section-block-->
+                                <div class="section-block">
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> I've made a wrapper for Jikan!</h3>
+                                    <div class="answer">That's great! Let me know and I'll add it everywhere.</div>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
                             
@@ -104,13 +131,13 @@
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> What can I get through Jikan?</h3>
                                     <div class="answer">
-                                    <p>You can get anime, manga, character, people, search data from MyAnimeList through a very simple GET request.</p>
+                                    <p>A whole lot. Refer to the <b><a href="https://github.com/jikan-me/jikan/blob/master/readme.md" target="_blank">Readme</a></b> file.</p>
                                     </div><!--//anwser-->
                                 </div><!--//section-block-->
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> Can you add < insert added functionality > to Jikan?</h3>
                                     <div class="answer">
-                                    <p>Depends on what you need. Contact me via <a href="mailto:admin@jikan.me">email</a> or drop me a message at <a href="https://myanimelist.net/profile/Nekomata1037" target="_blank">MyAnimeList</a>.</p>
+                                    <p>Open an issue on the <b><a href="https://github.com/irfan-dahir/jikan/issues" target="_blank">GitHub</a></b> repo with the feature you'd like to see added.</p>
                                     </div><!--//anwser-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
@@ -120,7 +147,7 @@
                                 <h2 class="section-title">Support</h2>
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> I have a problem using this!</h3>
-                                    <div class="answer">Whether you're talking about the REST API or the source, feel free to drop me an email or message and I'll gladly support you!</div>
+                                    <div class="answer">Whether you're talking about the REST API or the source, feel free to drop me an <a href="mailto:hello@jikan.moe">email</a> or <a href="https://github.com/jikan-me/jikan/issues" target="_blank">open an issue</a> and I'll gladly help you out!</div>
                                 </div><!--//section-block-->
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> I found a bug!</h3>
@@ -129,7 +156,7 @@
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> The REST API isn't working!</h3>
                                     <div class="answer">
-                                        <p>Uh-oh. Send me an <a href="mailto:admin@jikan.me">email</a> or a <a href="https://myanimelist.net/profile/Nekomata1037" target="_blank">Private Message</a> and I'll resolve it asap.</p>
+                                        <p>Uh-oh. <a href="https://github.com/jikan-me/jikan/issues" target="_blank">Open an issue</a> or <a href="mailto:hello@jikan.moe">email</a> me and I'll resolve it ASAP.</p>
                                     </div>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
@@ -156,7 +183,7 @@
         <div style="margin:0 2em;">
             <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
             <small class="copyright">
-                <span class="pull-left">Hosted by <a href="https://brohosting.eu/" target="_blank">BroHosting</a> - <i class="fa fa-copyright"></i> Jikan.me <a href="https://twitter.com/IrfanDahir" target="_blank">Nekomata</a> 2017</span>
+                <span class="pull-left">Hosted by <a href="https://twitter.com/assintates/" target="_blank">Assintates</a> - <i class="fa fa-copyright"></i> Jikan.me <a href="https://twitter.com/IrfanDahir" target="_blank">#irfan</a> 2017-2018</span>
                 <span class="pull-right">Theme by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a></span>
             </small>
             
