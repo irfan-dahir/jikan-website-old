@@ -245,7 +245,7 @@ $anime = $jikan->Anime(21, [EPISODES => 2, CHARACTERS_STAFF])->response;
                                 </div><!--//section-block-->
 
 
-                                <div id="anime-method"  class="section-block">
+                                <div id="manga-method"  class="section-block">
                                     <h3 class="block-title">Manga</h3>
                                       <p>This method parses item data by ID from <code>https://myanimelist.net/manga/{id}</code></p>
                                       <p><a href="#schema-manga" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
@@ -294,13 +294,13 @@ $manga = $jikan->Manga(1, [CHARACTERS, NEWS, STATS, PICTURES, FORUM, MORE_INFO])
 
                                         </code></pre>
                                     </div><!--//code-block-->
-                                    <p><b>Note:</b> If there's more than 100 episodes for an Anime, MyAnimeList paginates them. You can access that paginated list by their pages. Giving <code>EPISOEDS => 2</code> will make it fetch the page from the 2nd page, starting from the 101th episode</p>.
-                                    <p><b>Note 2:</b> The <code>episode_last_page</code> field will tell you how many episodes there are.</p>
                                 </div><!--//section-block-->
 
-                                <div id="manga-method"  class="section-block">
-                                    <h3 class="block-title">Manga</h3>
-                                      <p>This method parses item data by ID from <code>https://myanimelist.net/manga/{id}</code></p>
+
+                                <div id="character-method"  class="section-block">
+                                    <h3 class="block-title">Character</h3>
+                                      <p>This method parses item data by ID from <code>https://myanimelist.net/character/{id}</code></p>
+                                      <p><a href="#schema-character" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
                                       <h6>Parameter(s)</h6>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
@@ -315,24 +315,25 @@ $manga = $jikan->Manga(1, [CHARACTERS, NEWS, STATS, PICTURES, FORUM, MORE_INFO])
                                                     <tr>
                                                         <td>ID</td>
                                                         <td>integer</td>
-                                                        <td>The Manga ID on MyAnimeList</td>
+                                                        <td>The Anime ID on MyAnimeList</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Extend Requests</td>
+                                                        <td>Extended Request(s)</td>
                                                         <td>constant</td>
-                                                        <td><a href="#extended-request-manga-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
+                                                        <td><a href="#extended-request-character-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
                                     <div class="code-block">
                                         <h4>Usage</h4>
-                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
-                                        <p><code>$jikan->Manga(1);</code></p>
-                                        <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
-                                        <h6>Examples</h6>
-                                        <p><code>$anime = $jikan->Manga(1)->response;</code></p>
-                                        <p><code>$anime = $jikan->Manga(1, CHARACTERS)->response;</code></p>
+                                        <pre><code class="php">
+$character = $jikan->Character(1)->response; // parsed character with ID 1 on MyAnimeList
+
+// parsed the character and also an extended parse of it's pictures page. the data is merged and returned
+$character = $jikan->Character(1, PICTURES)->response;
+
+                                        </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
 
