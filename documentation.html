@@ -190,6 +190,7 @@ try {
                                         <p>Whichever method you use, the response array will be stored there!</p>
                                     </div><!--//content-->
                                 </div><!--//callout-block-->
+
                                 <div id="anime-method"  class="section-block">
                                     <h3 class="block-title">Anime</h3>
                                       <p>This method parses item data by ID from <code>https://myanimelist.net/anime/{id}</code></p>
@@ -213,7 +214,7 @@ try {
                                                     <tr>
                                                         <td>Extended Request(s)</td>
                                                         <td>constant</td>
-                                                        <td><a href="#chaining-methods" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
+                                                        <td><a href="#extended-request-anime-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -233,7 +234,62 @@ $anime = $jikan->Anime(1, CHARACTERS_STAFF)->response; // same process as above 
 $anime = $jikan->Anime(1, [EPISODES, CHARACTERS_STAFF])->response;
 
 // Anime with over 100 episodes have paginated episodes list, you can tell Jikan which page we want to parse
-$anime = $jikan->Anime(1, [EPISODES => 2, CHARACTERS_STAFF])->response;
+// 21 is the ID of "One Piece"
+$anime = $jikan->Anime(21, [EPISODES => 2, CHARACTERS_STAFF])->response;
+
+
+                                        </code></pre>
+                                    </div><!--//code-block-->
+                                    <p><b>Note:</b> If there's more than 100 episodes for an Anime, MyAnimeList paginates them. You can access that paginated list by their pages. Giving <code>EPISOEDS => 2</code> will make it fetch the page from the 2nd page, starting from the 101th episode</p>.
+                                    <p><b>Note 2:</b> The <code>episode_last_page</code> field will tell you how many episodes there are.</p>
+                                </div><!--//section-block-->
+
+
+                                <div id="anime-method"  class="section-block">
+                                    <h3 class="block-title">Manga</h3>
+                                      <p>This method parses item data by ID from <code>https://myanimelist.net/manga/{id}</code></p>
+                                      <p><a href="#schema-manga" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
+                                      <h6>Parameter(s)</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>integer</td>
+                                                        <td>The Anime ID on MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Extended Request(s)</td>
+                                                        <td>constant</td>
+                                                        <td><a href="#extended-request-manga-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                    <div class="code-block">
+                                        <h4>Usage</h4>
+                                        <pre><code class="php">
+$manga = $jikan->Manga(1)->response; // parsed manga with ID 1 on MyAnimeList
+
+// parsed the manga and also an extended parse of it's characters listing page. the data is merged and returned
+$manga = $jikan->Manga(1, CHARACTERS)->response;
+
+$manga = $jikan->Manga(1, STATS)->response; // same process as above but with stats
+
+// Now to get BOTH the characters & stats data alongside the manga's data,
+// we pass the second argument as an array
+$manga = $jikan->Manga(1, [STATS, CHARACTERS])->response;
+
+
+// You can go crazy with this
+$manga = $jikan->Manga(1, [CHARACTERS, NEWS, STATS, PICTURES, FORUM, MORE_INFO])->response;
 
 
                                         </code></pre>
@@ -264,7 +320,7 @@ $anime = $jikan->Anime(1, [EPISODES => 2, CHARACTERS_STAFF])->response;
                                                     <tr>
                                                         <td>Extend Requests</td>
                                                         <td>constant</td>
-                                                        <td>The available extended parameters for this is <code>CHARACTERS</code></td>
+                                                        <td><a href="#extended-request-manga-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
