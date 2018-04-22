@@ -337,41 +337,10 @@ $character = $jikan->Character(1, PICTURES)->response;
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
 
-                                <div id="chracter-method"  class="section-block">
-                                    <h3 class="block-title">Character</h3>
-                                      <p>This method fetches character data by ID from <code>https://myanimelist.net/character/</code></p>
-                                      <h6>Parameter(s)</h6>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Type</th>
-                                                        <th>Description</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>ID</td>
-                                                        <td>integer</td>
-                                                        <td>The Character ID on MyAnimeList</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div><!--//table-responsive-->
-                                    <div class="code-block">
-                                        <h4>Usage</h4>
-                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
-                                        <p><code>$jikan->Character(1);</code></p>
-                                        <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
-                                        <h6>Examples</h6>
-                                        <p><code>$anime = $jikan->Character(1)->response;</code></p>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-
                                 <div id="person-method"  class="section-block">
                                     <h3 class="block-title">Person</h3>
-                                      <p>This method fetches person data by ID from <code>https://myanimelist.net/people/</code></p>
+                                      <p>This method parses item data by ID from <code>https://myanimelist.net/people/{id}</code></p>
+                                      <p><a href="#schema-person" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
                                       <h6>Parameter(s)</h6>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
@@ -386,18 +355,25 @@ $character = $jikan->Character(1, PICTURES)->response;
                                                     <tr>
                                                         <td>ID</td>
                                                         <td>integer</td>
-                                                        <td>The Person ID on MyAnimeList</td>
+                                                        <td>The Anime ID on MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Extended Request(s)</td>
+                                                        <td>constant</td>
+                                                        <td><a href="#extended-request-person-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
                                     <div class="code-block">
                                         <h4>Usage</h4>
-                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
-                                        <p><code>$jikan->Person(1);</code></p>
-                                        <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
-                                        <h6>Examples</h6>
-                                        <p><code>$anime = $jikan->Person(1)->response;</code></p>
+                                        <pre><code class="php">
+$person = $jikan->Person(1)->response; // parsed person with ID 1 on MyAnimeList
+
+// parsed the person and also an extended parse of it's pictures page. the data is merged and returned
+$person = $jikan->Person(1, PICTURES)->response;
+
+                                        </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
 
