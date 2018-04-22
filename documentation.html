@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<head>
+    <title>Jikan - PHP Documentation</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jikan Documentation for REST API and Jikan PHP Library Source">
+    <meta name="author" content="Nekomata">    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
+    
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/images/favicon/manifest.json">
+    <link rel="mask-icon" href="assets/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="assets/images/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2e51a2">
+    <meta name="msapplication-TileImage" content="assets/images/favicon/mstile-144x144.png">
+    <meta name="msapplication-config" content="assets/images/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+</head> 
+<body class="body-green">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99574439-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <div class="page-wrapper">
+        <!-- ******Header****** -->
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="https://jikan.me">
+                            <span aria-hidden="true" class="icon_documents_alt icon"></span>
+                            <span class="text-highlight">Jikan</span><span class="text-bold">Docs</span>
+                        </a>
+                    </h1>
+                </div><!--//branding-->
+                <ol class="breadcrumb">
+                    <li><a href="https://jikan.me">Home</a></li>
+                    <li class="active">Documentation</li>
+                </ol>
+            </div><!--//container-->
+        </header><!--//header-->
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fa fa-cube"></i> Documenation</h1>
+                </div><!--//doc-header-->
+                <div class="doc-body">
+                    <div class="doc-content">
+                        <div class="content-inner">
+                            <section id="rest-section" class="doc-section">
+                                <h2 class="section-title">REST</h2>
+                                <div class="section-block">
+                                    <p>The REST API Documentation is available here: <a href="https://jikan.docs.apiary.io/" target="_blank">https://jikan.docs.apiary.io/</a></p>
+
+                                    <p>Base URL: <code>http://api.jikan.me/</code></p>
+                                    <p>Base URL (SSL): <code>https://api.jikan.me/</code></p>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="wrappers-section" class="doc-section">
+                                <h2 class="section-title">Wrappers</h2>
+                                <div class="section-block">
+                                    <p>Python - <a href="https://github.com/AWConant/jikanpy" target="_blank">JikanPy</a></p>
+                                </div>
+                            </section><!--//doc-section-->
+                            <section id="installation-section" class="doc-section">
+                              <h2 class="section-title">Installation</h2>
+                              <div class="section-block">
+                                <p><b>JikanPHP</b> is available on <a href="https://packagist.org/packages/jikan-me/jikan" target="_blank">Composer</a>, so get started by requiring it.</p>
+                                <code>composer require jikan-me/jikan</code>
+
+                                <br><p>
+                                  That's it! Now start using it.
+                                </p>
+                                <pre><code class="language-php">
+$jikan = new Jikan\Jikan;
+$anime = $jikan->Anime(1)->response;
+$anime = $jikan->Anime(1)->response;
+$manga = $jikan->Manga(1, [CHARACTERS])->response;
+                                </code></pre>
+
+                                <br><a href="https://github.com/jikan-me/jikan/tree/master/examples" target="_blank">More examples are available here</a></p>
+                              </div>
+                            </section>
+
+                            <section id="methods-section" class="doc-section">
+                                <h2 class="section-title">Methods</h2>
+                                <div class="callout-block callout-info">
+                                    <div class="icon-holder">
+                                        <i class="fa fa-info-circle"></i>
+                                    </div><!--//icon-holder-->
+                                    <div class="content">
+                                        <h4 class="callout-title">When no matches are found</h4>
+                                        <p>If you use these methods to fetch a non-existent ID or query that doesn't parse any data, exceptions will be thrown</p>
+                                    </div><!--//content-->
+                                </div><!--//callout-block-->
+                                <div id="anime-method"  class="section-block">
+                                    <h3 class="block-title">Anime</h3>
+                                      <p>This method fetches anime data by ID from <code>https://myanimelist.net/anime/</code></p>
+                                      <h6>Parameter(s)</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>integer</td>
+                                                        <td>The Anime ID on MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Extend Requests</td>
+                                                        <td>constant</td>
+                                                        <td>The available extended parameters for this are <code>EPISODES</code> and <code>CHARACTERS_STAFF</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                    <div class="code-block">
+                                        <h6>Usage</h6>
+                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
+                                        <p><code>$jikan->Anime(1);</code></p>
+                                        <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
+                                        <h6>Examples</h6>
+                                        <p><code>$anime = $jikan->Anime(1)->response;</code></p>
+                                        <p><code>$anime = $jikan->Anime(1, EPISODES)->response;</code></p>
+                                        <p><code>$anime = $jikan->Anime(1, CHARACTERS_STAFF)->response;</code></p>
+                                        <p><code>$anime = $jikan->Anime(1, [EPISODES, CHARACTERS_STAFF])->response;</code></p>
+                                        <p><code>$anime = $jikan->Anime(1, [EPISODES => 2, CHARACTERS_STAFF])->response;</code></p>
+                                    </div><!--//code-block-->
+                                    <p><b>Note:</b> If there's more than 100 episodes for an Anime, MyAnimeList paginates them. You can access that paginated list by their pages. Giving <code>EPISOEDS => 2</code> will make it fetch the page from the 2nd page, starting from the 101th episode</p>.
+                                    <p><b>Note 2:</b> The <code>episode_last_page</code> field will tell you how many episodes there are.</p>
+                                </div><!--//section-block-->
+
+                                <div id="manga-method"  class="section-block">
+                                    <h3 class="block-title">Manga</h3>
+                                      <p>This method fetches manga data by ID from <code>https://myanimelist.net/manga/</code></p>
+                                      <h6>Parameter(s)</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>integer</td>
+                                                        <td>The Manga ID on MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Extend Requests</td>
+                                                        <td>constant</td>
+                                                        <td>The available extended parameters for this is <code>CHARACTERS</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                    <div class="code-block">
+                                        <h6>Usage</h6>
+                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
+                                        <p><code>$jikan->Manga(1);</code></p>
+                                        <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
+                                        <h6>Examples</h6>
+                                        <p><code>$anime = $jikan->Manga(1)->response;</code></p>
+                                        <p><code>$anime = $jikan->Manga(1, CHARACTERS)->response;</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+
+                                <div id="chracter-method"  class="section-block">
+                                    <h3 class="block-title">Character</h3>
+                                      <p>This method fetches character data by ID from <code>https://myanimelist.net/character/</code></p>
+                                      <h6>Parameter(s)</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>integer</td>
+                                                        <td>The Character ID on MyAnimeList</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                    <div class="code-block">
+                                        <h6>Usage</h6>
+                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
+                                        <p><code>$jikan->Character(1);</code></p>
+                                        <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
+                                        <h6>Examples</h6>
+                                        <p><code>$anime = $jikan->Character(1)->response;</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+
+                                <div id="person-method"  class="section-block">
+                                    <h3 class="block-title">Person</h3>
+                                      <p>This method fetches person data by ID from <code>https://myanimelist.net/people/</code></p>
+                                      <h6>Parameter(s)</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>ID</td>
+                                                        <td>integer</td>
+                                                        <td>The Person ID on MyAnimeList</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                    <div class="code-block">
+                                        <h6>Usage</h6>
+                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
+                                        <p><code>$jikan->Person(1);</code></p>
+                                        <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
+                                        <h6>Examples</h6>
+                                        <p><code>$anime = $jikan->Person(1)->response;</code></p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+
+                                <div id="search-method"  class="section-block">
+                                    <h3 class="block-title">Search</h3>
+                                    <div class="callout-block callout-danger">
+                                        <div class="icon-holder">
+                                            <i class="fa fa-info-circle"></i>
+                                        </div><!--//icon-holder-->
+                                        <div class="content">
+                                            <h4 class="callout-title">Unavailable</h4>
+                                            <p>This feature is not available yet. It is planned to be added in the future.</p>
+                                        </div><!--//content-->
+                                    </div><!--//callout-block-->
+                                      <p>This method fetches query data by ID from:</p>
+                                        <p><code>https://myanimelist.net/anime.php?q=</code></p>
+                                        <p><code>https://myanimelist.net/manga.php?q=</code></p>
+                                        <p><code>https://myanimelist.net/people.php?q=</code></p>
+                                        <p><code>https://myanimelist.net/character.php?q=</code></p>
+                                      <h6>Parameter(s)</h6>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>type</td>
+                                                        <td>string</td>
+                                                        <td>anime, manga, character, person</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>query</td>
+                                                        <td>string</td>
+                                                        <td>The search string</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>page</td>
+                                                        <td>integer</td>
+                                                        <td>The page of the search result. <b>Set to 1, by default. So you can omit this</b></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                    <div class="code-block">
+                                        <h6>Usage</h6>
+                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
+                                        <p><code>$jikan->search('anime', 'Steins', 1);</code></p>
+                                        <p>This stores the parsed data in <code>public $data</code>. To access it: <code>$jikan->data</code></p>
+                                        <h6>Examples</h6>
+                                        <p><code>$anime = $jikan->search('manga', 'Kimi No Nawa', 1)->data;</code></p>
+                                        <p>It'll automatically <code>urlencode()</code> the query!</p>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+
+
+                            </section><!--//doc-section-->
+                            <section id="advanced-section" class="doc-section">
+                                <h2 class="section-title">Advanced</h2>
+                                <div class="callout-block callout-danger">
+                                    <div class="icon-holder">
+                                        <i class="fa fa-info-circle"></i>
+                                    </div><!--//icon-holder-->
+                                    <div class="content">
+                                        <h4 class="callout-title">Note</h4>
+                                        <p>Not all flags are added or available yet.</p>
+                                    </div><!--//content-->
+                                </div>
+                                <div id="chaining-methods"  class="section-block">
+                                    <h3 class="block-title">Extend Flags</h3>
+                                    <p>You can request multiple data from multiple pages using <b>Extend Flags</b></p>
+                                    <p>These are extended data responses to the <b>anime</b>, <b>manga</b>, <b>character</b> and <b>person</b> methods.</p>
+                                    <br><br>
+                                    <h3>Available Flags</h3>
+                                    <h5>Anime</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Parent Method</th>
+                                                        <th>Flag</th>
+                                                        <th>Returns</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>EPISODES</b></td>
+                                                        <td>Returns the episodes parsed from an anime's episode page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/episode</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>CHARACTERS_STAFF</b></td>
+                                                        <td>Returns the chracters and staff parsed from an anime's character and staff page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/characters</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>VIDEOS</b> <label class="label label-danger">not added</label></td>
+                                                        <td>Returns the videos parsed from an anime's video page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/video</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>RECOMMENDATIONS</b> <label class="label label-danger">not added</label></td>
+                                                        <td>Returns the recommendations parsed from an anime's user recommendation page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/userrecs</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>STATS</b> <label class="label label-danger">not added</label></td>
+                                                        <td>Returns the stats parsed from an anime's stats page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/stats</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>PICTURES</b> <label class="label label-danger">not added</label></td>
+                                                        <td>Returns the picture links parsed from an anime's pictures page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/pics</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>MOREINFO</b> <label class="label label-danger">not added</label></td>
+                                                        <td>Returns the more info data parsed from an anime's more info page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/moreinfo</code></td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                   <h5>Manga</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Parent Method</th>
+                                                        <th>Flag</th>
+                                                        <th>Returns</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Manga</td>
+                                                        <td><b>CHARACTERS</b></td>
+                                                        <td>Returns the chracters and staff parsed from an manga's character and staff page. e.g <code>https://myanimelist.net/manga/1/Monster/characters</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Manga</td>
+                                                        <td><b>RECOMMENDATIONS</b> <label class="label label-danger">not added</label></td>
+                                                        <td>Returns the recommendations parsed from an manga's user recommendation page. e.g <code>https://myanimelist.net/manga/1/Monster/userrecs</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Manga</td>
+                                                        <td><b>STATS</b> <label class="label label-danger">not added</label></td>
+                                                        <td>Returns the stats parsed from an manga's stats page. e.g <code>https://myanimelist.net/manga/1/Monster/stats</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Manga</td>
+                                                        <td><b>PICTURES</b> <label class="label label-danger">not added</label></td>
+                                                        <td>Returns the picture links parsed from an manga's pictures page. e.g <code>https://myanimelist.net/manga/1/Monster/pics</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                   <h5>Character</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Parent Method</th>
+                                                        <th>Flag</th>
+                                                        <th>Returns</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Character</td>
+                                                        <td><b>PICTURES</b></td>
+                                                        <td>Returns the picture links parsed from an character's pictures page. e.g <code>https://myanimelist.net/character/1/Spike_Spiegel/pictures</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                   <h5>Person</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Parent Method</th>
+                                                        <th>Flag</th>
+                                                        <th>Returns</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Person</td>
+                                                        <td><b>PICTURES</b></td>
+                                                        <td>Returns the picture links parsed from an person's pictures page. e.g <code>https://myanimelist.net/people/1/Tomokazu_Seki/pictures</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                    <h3>Usage</h3>
+                                    <pre><code class="language-php">
+$jikan = new Jikan\Jikan;
+$anime_and_stats = $jikan->Anime(1, STATS)->data; // makes 2 requests
+$anime_all = $jikan->Anime(1, [VIDEOS, EPISODES, RECOMMENDATIONS, STATS, CHARACTERS_STAFF, PICTURES, MOREINFO])->response; // 8 requests!
+// This scrapes 8 pages! It will be much slower!
+// The data from these chained methods are stored in $jikan->response
+                                    </code></pre>
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="api-dev-section" class="doc-section">
+                                <h2 class="section-title">API Development</h2>
+                                <div class="section-block">
+                                    <p>Did you know that Jikan is modular enough to allow developers to integrate their own search functions within the source? If you're a PHP developer and have substancial knowledge in ReGex then you can easily get started.</p>
+                                    <h5>How does Jikan work?</h5>
+                                    <p>It fetches and stores the HTML document of the page as an array. Then it proceeds to loop line-by-line through the array. With this implementation, it checks for searches that are appointed to the current call (e.g anime method). Search</p>
+                                    <h5>Where do I get started?</h5>
+                                    <p>I recently re-wrote the entire API. So this section is coming soon.</p>
+                                </div><!--//section-block-->
+
+                                <br><br><br><br><br><br>
+                                <h2>Happy Developing!</h2>
+                            </section><!--//doc-section-->
+                        </div><!--//content-inner-->
+                    </div><!--//doc-content-->
+                    <div class="doc-sidebar hidden-xs">
+                        <nav id="doc-nav">
+                            <ul id="doc-menu" class="nav doc-menu" data-spy="affix">
+                                <li><a class="scrollto" href="#rest-section">REST</a></li>
+                                <li><a class="scrollto" href="#wrappers-section">Wrappers</a></li>
+                             <li>
+                                    <a class="scrollto" href="#installation-section">PHP Source</a>
+                                    <ul class="nav doc-sub-menu">
+                                        <li><a class="scrollto" href="#installation-section">Installation</a></li>
+                                        <li><a class="scrollto" href="#prerequisites-section">Prerequisites</a></li>
+                                        <li><a class="scrollto" href="#installation-section">Installation</a></li>
+
+                                    </ul><!--//nav-->
+                                </li>
+                                <li>
+                                    <a class="scrollto" href="#methods-section">Methods</a>
+                                    <ul class="nav doc-sub-menu">
+                                        <li><a class="scrollto" href="#anime-method">Anime</a></li>
+                                        <li><a class="scrollto" href="#manga-method">Manga</a></li>
+                                        <li><a class="scrollto" href="#character-method">Character</a></li>
+                                        <li><a class="scrollto" href="#person-method">Person</a></li>
+                                        <li><a class="scrollto" href="#search-method">Search</a></li>
+
+                                    </ul><!--//nav-->
+                                </li>
+                                <li>
+                                    <a class="scrollto" href="#advanced-section">Advanced</a>
+                                    <ul class="nav doc-sub-menu">
+                                        <li><a class="scrollto" href="#chaining-methods">Extend Flags</a></li>
+                                        <li><a class="scrollto" href="#api-dev-section">API Development</a></li>
+                                    </ul><!--//nav-->
+                                </li>
+                            </ul><!--//doc-menu-->
+                        </nav>
+                    </div><!--//doc-sidebar-->
+                </div><!--//doc-body-->              
+            </div><!--//container-->
+        </div><!--//doc-wrapper-->
+        
+    </div><!--//page-wrapper-->
+    
+    <footer class="footer text-center">
+        <div style="margin:0 2em;">
+            <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
+            <small class="copyright">
+                <span class="pull-left">Hosted by <a href="https://brohosting.eu/" target="_blank">BroHosting</a> - <i class="fa fa-copyright"></i> Jikan.me <a href="https://twitter.com/IrfanDahir" target="_blank">Nekomata</a> 2017</span>
+                <span class="pull-right">Theme by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a></span>
+            </small>
+            
+        </div><!--//container-->
+    </footer><!--//footer-->
+    
+     
+    <!-- Main Javascript -->          
+    <script type="text/javascript" src="assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>                                                                
+    <script type="text/javascript" src="assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    
+</body>
+</html> 
+

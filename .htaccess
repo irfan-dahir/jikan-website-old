@@ -1,0 +1,20 @@
+IndexIgnore *
+DirectoryIndex index.html
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule api/v1/(.*)$ api/v1/api.php?request=$1 [QSA,NC,L]
+RewriteRule api/v1.1/(.*)$ api/v1.1/api.php?request=$1 [QSA,NC,L]
+RewriteRule api/v1.2/(.*)$ api/v1.2/api.php?request=$1 [QSA,NC,L]
+RewriteRule api/v2.0-dev/(.*)$ api/v2.0-dev/api.php?request=$1 [QSA,NC,L]
+RewriteRule api/(.*)$ api/v1.1/api.php?request=$1 [QSA,NC,L]
+RewriteRule index index.html
+RewriteRule changelog https://github.com/jikan-me/jikan/blob/master/changelog.md
+RewriteRule faq faqs.html
+RewriteRule faqs faqs.html
+RewriteRule docs documentation.html
+RewriteRule doc documentation.html
+RewriteRule documentation documentation.html
+RewriteRule shoutouts shoutouts.html
+RewriteRule showcase showcase.html
+RewriteRule about about.html
