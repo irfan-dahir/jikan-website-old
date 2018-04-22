@@ -58,6 +58,19 @@
     <meta name="msapplication-TileImage" content="assets/images/favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="assets/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/agate.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <style type="text/css">
+        pre {
+            margin: 0 !important;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+    </style>
 </head> 
 <body class="body-green">
 <script>
@@ -110,25 +123,50 @@
                                 <div class="section-block">
                                     <p>Python - <a href="https://github.com/AWConant/jikanpy" target="_blank">JikanPy</a></p>
                                     <p>Ruby - <a href="https://github.com/Zerocchi/jikan.rb" target="_blank">Jikan.rb</a></p>
+
+                                    <br><br>
+                                    <p>If you make a Jikan wrapper, do let me know!</p>
                                 </div>
                             </section><!--//doc-section-->
                             <section id="installation-section" class="doc-section">
                               <h2 class="section-title">Installation</h2>
                               <div class="section-block">
-                                <p><b>JikanPHP</b> is available on <a href="https://packagist.org/packages/jikan-me/jikan" target="_blank">Composer</a>, so get started by requiring it.</p>
-                                <code>composer require jikan-me/jikan</code>
-
-                                <br><p><br>
-                                  That's it! Now start using it.
+                                <p><b>Note: Jikan needs <a href="https://getcomposer.org" target="_blank">Composer</a> to install.</b></p>
+                                <p>
+                                  Once you're done setting up a composer project, require jikan
                                 </p>
-                                <pre><code class="language-php">
+                                <code>composer require jikan-me/jikan</code>
+                                <br><br>
+
+                                <p>Then test it out!</p>
+
+                                <pre><code class="php">
+require_once "vendor/autoload.php"; // require your composer autoloader file wherever it is
+
 $jikan = new Jikan\Jikan;
-$anime = $jikan->Anime(1)->response;
-$anime = $jikan->Anime(1)->response;
-$manga = $jikan->Manga(1, [CHARACTERS])->response;
+var_dump($jikan->Anime(1)->response); // get anime with ID 1 on MAL
+var_dump($jikan->Manga(1)->response); // get manga with ID 1 on MAL
+var_dump($jikan->Manga(1, [CHARACTERS])->response); // get the manga with ID 1 AND make an extended request for its' characters listing
+var_dump($jikan->Manga(1, [CHARACTERS, STATS])->response); // the above request PLUS an extended request for its' stats
                                 </code></pre>
 
-                                <br><a href="https://github.com/jikan-me/jikan/tree/master/examples" target="_blank">More examples are available here</a></p>
+                                <br>
+                                <p>Jikan returns exceptions on errors. So for production use <code>try/catch</code> to receive any errors</p>
+                                <br>
+
+                                <pre><code class="php">
+try {
+    $jikan->Anime(3);
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(); // "File does not exist" (the anime with this ID doesn't exist on MAL)
+}
+                                </code></pre>
+
+                                <br>
+                                <p>
+                                    <a class="btn btn-blue btn-lg" href="https://github.com/jikan-me/jikan/tree/master/examples" target="_blank"><i class="fa fa-code"></i> Examples</a>
+                                    <a class="btn btn-red btn-lg" href="https://github.com/jikan-me/jikan/tree/master/examples" target="_blank"><i class="fa fa-exclamation-triangle"></i> Exceptions</a>
+                                </p>
                               </div>
                             </section>
 
@@ -139,13 +177,23 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
                                         <i class="fa fa-info-circle"></i>
                                     </div><!--//icon-holder-->
                                     <div class="content">
-                                        <h4 class="callout-title">When no matches are found</h4>
-                                        <p>If you use these methods to fetch a non-existent ID or query that doesn't parse any data, exceptions will be thrown</p>
+                                        <h4 class="callout-title"><code>$jikan = new Jikan\Jikan;</code></h4>
+                                        <p>For the purpose of keeping the examples in this documentation concise, I'm letting you know that we're instantiating Jikan as <code>$jikan</code></p>
+                                    </div><!--//content-->
+                                </div><!--//callout-block-->
+                                <div class="callout-block callout-info">
+                                    <div class="icon-holder">
+                                        <i class="fa fa-info-circle"></i>
+                                    </div><!--//icon-holder-->
+                                    <div class="content">
+                                        <h4 class="callout-title">Responses are stored in <code>$jikan->response</code></h4>
+                                        <p>Whichever method you use, the response array will be stored there!</p>
                                     </div><!--//content-->
                                 </div><!--//callout-block-->
                                 <div id="anime-method"  class="section-block">
                                     <h3 class="block-title">Anime</h3>
-                                      <p>This method fetches anime data by ID from <code>https://myanimelist.net/anime/</code></p>
+                                      <p>This method parses item data by ID from <code>https://myanimelist.net/anime/{id}</code></p>
+                                      <p><a href="#schema-anime" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
                                       <h6>Parameter(s)</h6>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
@@ -163,24 +211,32 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
                                                         <td>The Anime ID on MyAnimeList</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Extend Requests</td>
+                                                        <td>Extended Request(s)</td>
                                                         <td>constant</td>
-                                                        <td>The available extended parameters for this are <code>EPISODES</code> and <code>CHARACTERS_STAFF</code></td>
+                                                        <td><a href="#chaining-methods" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
                                     <div class="code-block">
-                                        <h6>Usage</h6>
-                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
-                                        <p><code>$jikan->Anime(1);</code></p>
-                                        <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
-                                        <h6>Examples</h6>
-                                        <p><code>$anime = $jikan->Anime(1)->response;</code></p>
-                                        <p><code>$anime = $jikan->Anime(1, EPISODES)->response;</code></p>
-                                        <p><code>$anime = $jikan->Anime(1, CHARACTERS_STAFF)->response;</code></p>
-                                        <p><code>$anime = $jikan->Anime(1, [EPISODES, CHARACTERS_STAFF])->response;</code></p>
-                                        <p><code>$anime = $jikan->Anime(1, [EPISODES => 2, CHARACTERS_STAFF])->response;</code></p>
+                                        <h4>Usage</h4>
+                                        <pre><code class="php">
+$anime = $jikan->Anime(1)->response; // parsed anime with ID 1 on MyAnimeList
+
+// parsed the anime and also an extended parse of it's episodes page. the data is merged and returned
+$anime = $jikan->Anime(1, EPISODES)->response;
+
+$anime = $jikan->Anime(1, CHARACTERS_STAFF)->response; // same process as above but with character & staff listing
+
+// Now to get BOTH the episodes & characters + staff data alongside the anime's data,
+// we pass the second argument as an array
+$anime = $jikan->Anime(1, [EPISODES, CHARACTERS_STAFF])->response;
+
+// Anime with over 100 episodes have paginated episodes list, you can tell Jikan which page we want to parse
+$anime = $jikan->Anime(1, [EPISODES => 2, CHARACTERS_STAFF])->response;
+
+
+                                        </code></pre>
                                     </div><!--//code-block-->
                                     <p><b>Note:</b> If there's more than 100 episodes for an Anime, MyAnimeList paginates them. You can access that paginated list by their pages. Giving <code>EPISOEDS => 2</code> will make it fetch the page from the 2nd page, starting from the 101th episode</p>.
                                     <p><b>Note 2:</b> The <code>episode_last_page</code> field will tell you how many episodes there are.</p>
@@ -188,7 +244,7 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
 
                                 <div id="manga-method"  class="section-block">
                                     <h3 class="block-title">Manga</h3>
-                                      <p>This method fetches manga data by ID from <code>https://myanimelist.net/manga/</code></p>
+                                      <p>This method parses item data by ID from <code>https://myanimelist.net/manga/{id}</code></p>
                                       <h6>Parameter(s)</h6>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
@@ -214,7 +270,7 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
                                             </table>
                                         </div><!--//table-responsive-->
                                     <div class="code-block">
-                                        <h6>Usage</h6>
+                                        <h4>Usage</h4>
                                         <p>Considering you've initialized Jikan as <code>$jikan</code></p>
                                         <p><code>$jikan->Manga(1);</code></p>
                                         <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
@@ -247,7 +303,7 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
                                             </table>
                                         </div><!--//table-responsive-->
                                     <div class="code-block">
-                                        <h6>Usage</h6>
+                                        <h4>Usage</h4>
                                         <p>Considering you've initialized Jikan as <code>$jikan</code></p>
                                         <p><code>$jikan->Character(1);</code></p>
                                         <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
@@ -279,7 +335,7 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
                                             </table>
                                         </div><!--//table-responsive-->
                                     <div class="code-block">
-                                        <h6>Usage</h6>
+                                        <h4>Usage</h4>
                                         <p>Considering you've initialized Jikan as <code>$jikan</code></p>
                                         <p><code>$jikan->Person(1);</code></p>
                                         <p>This stores the parsed data in <code>public $response</code>. To access it: <code>$jikan->response</code></p>
@@ -334,7 +390,7 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
                                             </table>
                                         </div><!--//table-responsive-->
                                     <div class="code-block">
-                                        <h6>Usage</h6>
+                                        <h4>Usage</h4>
                                         <p>Considering you've initialized Jikan as <code>$jikan</code></p>
                                         <p><code>$jikan->search('anime', 'Steins', 1);</code></p>
                                         <p>This stores the parsed data in <code>public $data</code>. To access it: <code>$jikan->data</code></p>
@@ -368,8 +424,8 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Parent Method</th>
-                                                        <th>Flag</th>
+                                                        <th>Method</th>
+                                                        <th>Constant</th>
                                                         <th>Returns</th>
                                                     </tr>
                                                 </thead>
@@ -377,37 +433,55 @@ $manga = $jikan->Manga(1, [CHARACTERS])->response;
                                                     <tr>
                                                         <td>Anime</td>
                                                         <td><b>EPISODES</b></td>
-                                                        <td>Returns the episodes parsed from an anime's episode page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/episode</code></td>
+                                                        <td>Fetches list of <b>all*</b> episodes as an <b>Array</b> in <code>episode</code> key.<br>Also returns <code>episode_last_page</code> which is the number of pages if the episodes page is paginated<br><br>
+                                                        Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/episode</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Anime</td>
                                                         <td><b>CHARACTERS_STAFF</b></td>
-                                                        <td>Returns the chracters and staff parsed from an anime's character and staff page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/characters</code></td>
+                                                        <td>Fetches a list of characters & staff as an <b>Array</b> in <code>character</code> and <code>staff</code> keys respectively<br><br>
+                                                        Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/characters</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Anime</td>
-                                                        <td><b>VIDEOS</b> <label class="label label-danger">not added</label></td>
-                                                        <td>Returns the videos parsed from an anime's video page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/video</code></td>
+                                                        <td><b>PICTURES</b> </td>
+                                                        <td>Fetches all the images available for the item as an <b>Array</b> in <code>image</code> key<br><br> 
+                                                        Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/pics</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Anime</td>
-                                                        <td><b>RECOMMENDATIONS</b> <label class="label label-danger">not added</label></td>
-                                                        <td>Returns the recommendations parsed from an anime's user recommendation page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/userrecs</code></td>
+                                                        <td><b>VIDEOS</b></td>
+                                                        <td>Fetches all the episodes & promo videos for the item as an <b>Array</b> in <code>episode</code> and <code>promo</code> keys respectively<br><br>
+                                                        Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/video</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Anime</td>
-                                                        <td><b>STATS</b> <label class="label label-danger">not added</label></td>
-                                                        <td>Returns the stats parsed from an anime's stats page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/stats</code></td>
+                                                        <td><b>STATS</b></td>
+                                                        <td>Fetches item stats returning the following as <b>Integer</b> type values of the following keys:<br> <code>watching</code>, <code>completed</code>, <code>on_hold</code>, <code>dropped</code>, <code>plan_to_watch</code>, <code>total</code> <br>and an <b>Array</b> key; <code>score_stats</code><br><br> 
+                                                        Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/stats</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Anime</td>
-                                                        <td><b>PICTURES</b> <label class="label label-danger">not added</label></td>
-                                                        <td>Returns the picture links parsed from an anime's pictures page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/pics</code></td>
+                                                        <td><b>NEWS</b></td>
+                                                        <td>Fetches new for the item as an <b>Array</b> in the <code>news</code> key<br><br>
+                                                        Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/news</code></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Anime</td>
-                                                        <td><b>MOREINFO</b> <label class="label label-danger">not added</label></td>
-                                                        <td>Returns the more info data parsed from an anime's more info page. e.g <code>https://myanimelist.net/anime/1/Cowboy_Bebop/moreinfo</code></td>
+                                                        <td><b>FORUM</b></td>
+                                                        <td>Fetches forum topics related to the item as an <b>Array</b> in <code>topic</code><br><br>
+                                                        Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/forum</code></td>
+                                                    </tr>                                                    
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>MORE_INFO</b> </td>
+                                                        <td>Fetches more info (if available) of the item as a <b>String</b> in <code>more_info</code><br><br>
+                                                        Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/moreinfo</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Anime</td>
+                                                        <td><b>RECOMMENDATIONS</b> <label class="label label-danger">NOT ADDED</label></td>
+                                                        <td><a href="https://github.com/jikan-me/jikan/issues/84">This extended request feature has not been added yet</a></td>
                                                     </tr>
 
                                                 </tbody>
@@ -517,30 +591,30 @@ $anime_all = $jikan->Anime(1, [VIDEOS, EPISODES, RECOMMENDATIONS, STATS, CHARACT
                                 <li><a class="scrollto" href="#rest-section">REST</a></li>
                                 <li><a class="scrollto" href="#wrappers-section">Wrappers</a></li>
                              <li>
-                                    <a class="scrollto" href="#installation-section">PHP Source</a>
+                                    <a class="scrollto" href="#installation-section">Get Started</a>
                                     <ul class="nav doc-sub-menu">
-                                        <li><a class="scrollto" href="#installation-section">Installation</a></li>
-                                        <li><a class="scrollto" href="#prerequisites-section">Prerequisites</a></li>
                                         <li><a class="scrollto" href="#installation-section">Installation</a></li>
 
                                     </ul><!--//nav-->
                                 </li>
                                 <li>
-                                    <a class="scrollto" href="#methods-section">Methods</a>
+                                    <a class="scrollto" href="#methods-section">Usage</a>
                                     <ul class="nav doc-sub-menu">
                                         <li><a class="scrollto" href="#anime-method">Anime</a></li>
                                         <li><a class="scrollto" href="#manga-method">Manga</a></li>
                                         <li><a class="scrollto" href="#character-method">Character</a></li>
                                         <li><a class="scrollto" href="#person-method">Person</a></li>
                                         <li><a class="scrollto" href="#search-method">Search</a></li>
+                                        <li><a class="scrollto" href="#search-method-advanced">Advanced Search</a></li>
 
                                     </ul><!--//nav-->
                                 </li>
                                 <li>
-                                    <a class="scrollto" href="#advanced-section">Advanced</a>
+                                    <a class="scrollto" href="#advanced-section">General</a>
                                     <ul class="nav doc-sub-menu">
-                                        <li><a class="scrollto" href="#chaining-methods">Extend Flags</a></li>
-                                        <li><a class="scrollto" href="#api-dev-section">API Development</a></li>
+                                        <li><a class="scrollto" href="#chaining-methods">Extended Request Constants</a></li>
+                                        <li><a class="scrollto" href="#chaining-methods">Advanced Search Constants</a></li>
+                                        <li><a class="scrollto" href="#chaining-methods">Errors & Exceptions</a></li>
                                     </ul><!--//nav-->
                                 </li>
                             </ul><!--//doc-menu-->
@@ -571,6 +645,14 @@ $anime_all = $jikan->Anime(1, [VIDEOS, EPISODES, RECOMMENDATIONS, STATS, CHARACT
     <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>                                                                
     <script type="text/javascript" src="assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
+
+    <script>
+$(document).ready(function() {
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+});
+    </script>
     
 </body>
 </html> 
