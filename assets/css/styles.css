@@ -447,9 +447,14 @@ select {
   color: #a2a6af;
 }
 .doc-content {
+  margin-left: 230px;
+}
+
+#showcase > .doc-content {
   width: 80%;
   margin: 0 auto;
 }
+
 .doc-section {
   padding-top: 15px;
   padding-bottom: 15px;
