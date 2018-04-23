@@ -447,7 +447,8 @@ select {
   color: #a2a6af;
 }
 .doc-content {
-  margin-left: 230px;
+  width: 80%;
+  margin: 0 auto;
 }
 .doc-section {
   padding-top: 15px;
