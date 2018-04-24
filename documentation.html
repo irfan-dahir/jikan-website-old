@@ -425,190 +425,176 @@ $person = $jikan->Person(1, PICTURES)->response;
                                         <p>It'll automatically <code>urlencode()</code> the query!</p>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
-
-
                             </section><!--//doc-section-->
-                            <section id="advanced-section" class="doc-section">
-                                <h2 class="section-title">Advanced</h2>
-                                <div class="callout-block callout-danger">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-info-circle"></i>
-                                    </div><!--//icon-holder-->
-                                    <div class="content">
-                                        <h4 class="callout-title">Note</h4>
-                                        <p>Not all flags are added or available yet.</p>
-                                    </div><!--//content-->
-                                </div>
+                            
+                            <section id="extended-request-constants" class="doc-section">
+                                <h2 class="section-title">General</h2>
                                 <div id="chaining-methods"  class="section-block">
-                                    <h3 class="block-title">Extend Flags</h3>
-                                    <p>You can request multiple data from multiple pages using <b>Extend Flags</b></p>
+                                    <h3 class="block-title">Extended Request Constants</h3>
+                                    <p>You can request multiple data from multiple pages using <b>Extend Constants</b></p>
                                     <p>These are extended data responses to the <b>anime</b>, <b>manga</b>, <b>character</b> and <b>person</b> methods.</p>
                                     <br><br>
-                                    <h3>Available Flags</h3>
-                                    <h5>Anime</h5>
+                                    <h3>Anime</h3>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Method</th>
                                                         <th>Constant</th>
-                                                        <th>Returns</th>
+                                                        <th>Data</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>EPISODES</b></td>
                                                         <td>Fetches list of <b>all*</b> episodes as an <b>Array</b> in <code>episode</code> key.<br>Also returns <code>episode_last_page</code> which is the number of pages if the episodes page is paginated<br><br>
                                                         Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/episode</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>CHARACTERS_STAFF</b></td>
                                                         <td>Fetches a list of characters & staff as an <b>Array</b> in <code>character</code> and <code>staff</code> keys respectively<br><br>
                                                         Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/characters</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>PICTURES</b> </td>
                                                         <td>Fetches all the images available for the item as an <b>Array</b> in <code>image</code> key<br><br> 
                                                         Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/pics</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>VIDEOS</b></td>
                                                         <td>Fetches all the episodes & promo videos for the item as an <b>Array</b> in <code>episode</code> and <code>promo</code> keys respectively<br><br>
                                                         Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/video</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>STATS</b></td>
-                                                        <td>Fetches item stats returning the following as <b>Integer</b> type values of the following keys:<br> <code>watching</code>, <code>completed</code>, <code>on_hold</code>, <code>dropped</code>, <code>plan_to_watch</code>, <code>total</code> <br>and an <b>Array</b> key; <code>score_stats</code><br><br> 
+                                                        <td>Fetches item stats returning the following as <b>Integer</b> type values of the following keys:<br> <code>watching</code> <code>completed</code> <code>on_hold</code> <code>dropped</code> <code>plan_to_watch</code> <code>total</code> and <br><br>an <b>Array</b> key: <code>score_stats</code><br><br><br>
                                                         Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/stats</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>NEWS</b></td>
                                                         <td>Fetches new for the item as an <b>Array</b> in the <code>news</code> key<br><br>
                                                         Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/news</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>FORUM</b></td>
                                                         <td>Fetches forum topics related to the item as an <b>Array</b> in <code>topic</code><br><br>
                                                         Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/forum</code></td>
                                                     </tr>                                                    
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>MORE_INFO</b> </td>
                                                         <td>Fetches more info (if available) of the item as a <b>String</b> in <code>more_info</code><br><br>
                                                         Parses from <code>https://myanimelist.net/anime/1/Cowboy_Bebop/moreinfo</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Anime</td>
                                                         <td><b>RECOMMENDATIONS</b> <label class="label label-danger">NOT ADDED</label></td>
                                                         <td><a href="https://github.com/jikan-me/jikan/issues/84">This extended request feature has not been added yet</a></td>
                                                     </tr>
-
+                                                    <tr>
+                                                        <td><b>REVIEWS</b> <label class="label label-danger">NOT ADDED</label></td>
+                                                        <td><a href="https://github.com/jikan-me/jikan/issues/85">This extended request feature has not been added yet</a></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
-                                   <h5>Manga</h5>
+                                   <h3>Manga</h3>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Parent Method</th>
-                                                        <th>Flag</th>
-                                                        <th>Returns</th>
+                                                        <th>Constant</th>
+                                                        <th>Data</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>Manga</td>
                                                         <td><b>CHARACTERS</b></td>
-                                                        <td>Returns the chracters and staff parsed from an manga's character and staff page. e.g <code>https://myanimelist.net/manga/1/Monster/characters</code></td>
+                                                        <td>Fetches a list of characters as an <b>Array</b> in <code>character</code> in key
+                                                        <br><br>
+                                                        Parses from <code>https://myanimelist.net/manga/1/Monster/characters</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Manga</td>
-                                                        <td><b>RECOMMENDATIONS</b> <label class="label label-danger">not added</label></td>
-                                                        <td>Returns the recommendations parsed from an manga's user recommendation page. e.g <code>https://myanimelist.net/manga/1/Monster/userrecs</code></td>
+                                                        <td><b>PICTURES</b> </td>
+                                                        <td>Fetches all the images available for the item as an <b>Array</b> in <code>image</code> key<br><br> 
+                                                        Parses from <code>https://myanimelist.net/manga/1/Monster/pics</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Manga</td>
-                                                        <td><b>STATS</b> <label class="label label-danger">not added</label></td>
-                                                        <td>Returns the stats parsed from an manga's stats page. e.g <code>https://myanimelist.net/manga/1/Monster/stats</code></td>
+                                                        <td><b>STATS</b></td>
+                                                        <td>Fetches item stats returning the following as <b>Integer</b> type values of the following keys:<br> <code>reading</code> <code>completed</code> <code>on_hold</code> <code>dropped</code> <code>plan_to_read</code> <code>total</code> and <br><br>an <b>Array</b> key: <code>score_stats</code><br><br><br>
+                                                        Parses from <code>https://myanimelist.net/manga/1/Monster/stats</code></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>Manga</td>
-                                                        <td><b>PICTURES</b> <label class="label label-danger">not added</label></td>
-                                                        <td>Returns the picture links parsed from an manga's pictures page. e.g <code>https://myanimelist.net/manga/1/Monster/pics</code></td>
+                                                        <td><b>NEWS</b></td>
+                                                        <td>Fetches new for the item as an <b>Array</b> in the <code>news</code> key<br><br>
+                                                        Parses from <code>https://myanimelist.net/manga/1/Monster/news</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>FORUM</b></td>
+                                                        <td>Fetches forum topics related to the item as an <b>Array</b> in <code>topic</code><br><br>
+                                                        Parses from <code>https://myanimelist.net/manga/1/Monster/forum</code></td>
+                                                    </tr>                                                    
+                                                    <tr>
+                                                        <td><b>MORE_INFO</b> </td>
+                                                        <td>Fetches more info (if available) of the item as a <b>String</b> in <code>more_info</code><br><br>
+                                                        Parses from <code>https://myanimelist.net/manga/1/Monster/moreinfo</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>RECOMMENDATIONS</b> <label class="label label-danger">NOT ADDED</label></td>
+                                                        <td><a href="https://github.com/jikan-me/jikan/issues/84">This extended request feature has not been added yet</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><b>REVIEWS</b> <label class="label label-danger">NOT ADDED</label></td>
+                                                        <td><a href="https://github.com/jikan-me/jikan/issues/85">This extended request feature has not been added yet</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
-                                   <h5>Character</h5>
+
+                                   <h3>Character</h3>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Parent Method</th>
-                                                        <th>Flag</th>
-                                                        <th>Returns</th>
+                                                        <th>Constant</th>
+                                                        <th>Data</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>Character</td>
-                                                        <td><b>PICTURES</b></td>
-                                                        <td>Returns the picture links parsed from an character's pictures page. e.g <code>https://myanimelist.net/character/1/Spike_Spiegel/pictures</code></td>
+                                                        <td><b>PICTURES</b> </td>
+                                                        <td>Fetches all the images available for the item as an <b>Array</b> in <code>image</code> key<br><br> 
+                                                        Parses from <code>https://myanimelist.net/character/1/Spike_Spiegel/pics</code></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
-                                   <h5>Person</h5>
+
+                                   <h3>Person</h3>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th>Parent Method</th>
-                                                        <th>Flag</th>
-                                                        <th>Returns</th>
+                                                        <th>Constant</th>
+                                                        <th>Data</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>Person</td>
-                                                        <td><b>PICTURES</b></td>
-                                                        <td>Returns the picture links parsed from an person's pictures page. e.g <code>https://myanimelist.net/people/1/Tomokazu_Seki/pictures</code></td>
+                                                        <td><b>PICTURES</b> </td>
+                                                        <td>Fetches all the images available for the item as an <b>Array</b> in <code>image</code> key<br><br> 
+                                                        Parses from <code>https://myanimelist.net/people/1/Tomokazu_Seki/pics</code></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
-                                    <h3>Usage</h3>
-                                    <pre><code class="language-php">
-$jikan = new Jikan\Jikan;
-$anime_and_stats = $jikan->Anime(1, STATS)->data; // makes 2 requests
-$anime_all = $jikan->Anime(1, [VIDEOS, EPISODES, RECOMMENDATIONS, STATS, CHARACTERS_STAFF, PICTURES, MOREINFO])->response; // 8 requests!
-// This scrapes 8 pages! It will be much slower!
-// The data from these chained methods are stored in $jikan->response
-                                    </code></pre>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
 
-                            <section id="api-dev-section" class="doc-section">
-                                <h2 class="section-title">API Development</h2>
+                            <section id="advanced-search-constants" class="doc-section">
+                                <h2 class="section-title">Advanced Search Constants</h2>
                                 <div class="section-block">
-                                    <p>Did you know that Jikan is modular enough to allow developers to integrate their own search functions within the source? If you're a PHP developer and have substancial knowledge in ReGex then you can easily get started.</p>
-                                    <h5>How does Jikan work?</h5>
-                                    <p>It fetches and stores the HTML document of the page as an array. Then it proceeds to loop line-by-line through the array. With this implementation, it checks for searches that are appointed to the current call (e.g anime method). Search</p>
-                                    <h5>Where do I get started?</h5>
-                                    <p>I recently re-wrote the entire API. So this section is coming soon.</p>
-                                </div><!--//section-block-->
 
-                                <br><br><br><br><br><br>
-                                <h2>Happy Developing!</h2>
+                                </div><!--//section-block-->
                             </section><!--//doc-section-->
+
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar hidden-xs">
@@ -638,8 +624,8 @@ $anime_all = $jikan->Anime(1, [VIDEOS, EPISODES, RECOMMENDATIONS, STATS, CHARACT
                                 <li>
                                     <a class="scrollto" href="#advanced-section">General</a>
                                     <ul class="nav doc-sub-menu">
-                                        <li><a class="scrollto" href="#chaining-methods">Extended Request Constants</a></li>
-                                        <li><a class="scrollto" href="#chaining-methods">Advanced Search Constants</a></li>
+                                        <li><a class="scrollto" href="#extended-request-constants">Extended Request Constants</a></li>
+                                        <li><a class="scrollto" href="#advanced-search-constants">Advanced Search Constants</a></li>
                                         <li><a class="scrollto" href="#chaining-methods">Errors & Exceptions</a></li>
                                     </ul><!--//nav-->
                                 </li>
