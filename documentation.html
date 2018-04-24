@@ -377,8 +377,10 @@ $person = $jikan->Person(1, PICTURES)->response;
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
 
+                            <section id="search-method" class="doc-section">
+                                <h2 class="section-title">Search</h2>
                                 <div id="search-method"  class="section-block">
-                                    <h3 class="block-title">Search</h3>
+                                    <!-- <h3 class="block-title">Basic Search</h3> -->
                                       <p><a href="#schema-search" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
                                       <p>This method parses query results from</p>
                                         <p><code>https://myanimelist.net/anime.php?q=</code></p>
@@ -398,38 +400,66 @@ $person = $jikan->Person(1, PICTURES)->response;
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>type</td>
-                                                        <td>string</td>
-                                                        <td>anime, manga, character, person</td>
+                                                        <td><code>type</code></td>
+                                                        <td>constant</td>
+                                                        <td><code>ANIME</code> <code>MANGA</code> <code>CHARACTER</code> <code>PERSON</code> <code>PEOPLE</code> (alias)</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>query</td>
+                                                        <td><code>query</code></td>
                                                         <td>string</td>
                                                         <td>The search string</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>page</td>
+                                                        <td><code>page</code> (optional)</td>
                                                         <td>integer</td>
                                                         <td>The page of the search result. <b>Set to 1, by default. So you can omit this</b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>SearchConfig</code> (optional)</td>
+                                                        <td>Object</td>
+                                                        <td>This is used in <a href="#advanced-search-method">Advanced Search</a> to add filters to your search results.</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
+                                    <h3>Usage</h3>
                                     <div class="code-block">
-                                        <h4>Usage</h4>
-                                        <p>Considering you've initialized Jikan as <code>$jikan</code></p>
-                                        <p><code>$jikan->search('anime', 'Steins', 1);</code></p>
-                                        <p>This stores the parsed data in <code>public $data</code>. To access it: <code>$jikan->data</code></p>
-                                        <h6>Examples</h6>
-                                        <p><code>$anime = $jikan->search('manga', 'Kimi No Nawa', 1)->data;</code></p>
-                                        <p>It'll automatically <code>urlencode()</code> the query!</p>
+                                        <pre><code>
+
+$jikan->Search('Steins;Gate', ANIME); // fetch query results
+
+// Array; results are stored in this key
+$jikan->response['result'];
+
+// Integer; number of pages for the results
+$jikan->response['result_last_page']; 
+
+// Pagination is supported
+$jikan->Search('Ichigo', CHARACTER, 2);
+$jikan->Search('Tate no Yuusha', MANGA, 2); 
+                                        </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
-                            
-                            <section id="extended-request-constants" class="doc-section">
+
+
+                            <section id="advanced-search-method" class="doc-section">
+                                <h2 class="section-title">Advanced Search</h2>
+                                <div id="search-method"  class="section-block">
+                                    <p>Advanced Search introduces filters to your search results.</p> 
+                                    <p>It can be used by passing a <em>fourth</em> argument to the <b>Search</b> method as a <code>Jikan\Helper\SearchConfig</code> object.</p>
+                                    <div class="code-block">
+                                        <pre><code>
+Docs WIP
+                                        </code></pre>
+                                    </div><!--//code-block-->
+                                </div><!--//section-block-->
+                            </section><!--//doc-section-->
+
+                            <section id="general-section" class="doc-section">
                                 <h2 class="section-title">General</h2>
-                                <div id="chaining-methods"  class="section-block">
+
+                                <div id="extended-request-constants"  class="section-block">
                                     <h3 class="block-title">Extended Request Constants</h3>
                                     <p>You can request multiple data from multiple pages using <b>Extend Constants</b></p>
                                     <p>These are extended data responses to the <b>anime</b>, <b>manga</b>, <b>character</b> and <b>person</b> methods.</p>
@@ -586,13 +616,17 @@ $person = $jikan->Person(1, PICTURES)->response;
                                             </table>
                                         </div><!--//table-responsive-->
                                 </div><!--//section-block-->
-                            </section><!--//doc-section-->
 
-                            <section id="advanced-search-constants" class="doc-section">
                                 <h2 class="section-title">Advanced Search Constants</h2>
-                                <div class="section-block">
-
+                                <div id="advanced-search-constants" class="section-block">
+                                    Docs WIP
                                 </div><!--//section-block-->
+
+                                <h2 class="section-title">Errors & Exception</h2>
+                                <div id="errors-and-exceptions" class="section-block">
+                                    Docs WIP
+                                </div><!--//section-block-->
+
                             </section><!--//doc-section-->
 
                         </div><!--//content-inner-->
@@ -617,16 +651,16 @@ $person = $jikan->Person(1, PICTURES)->response;
                                         <li><a class="scrollto" href="#character-method">Character</a></li>
                                         <li><a class="scrollto" href="#person-method">Person</a></li>
                                         <li><a class="scrollto" href="#search-method">Search</a></li>
-                                        <li><a class="scrollto" href="#search-method-advanced">Advanced Search</a></li>
+                                        <li><a class="scrollto" href="#advanced-search-method">Advanced Search</a></li>
 
                                     </ul><!--//nav-->
                                 </li>
                                 <li>
-                                    <a class="scrollto" href="#advanced-section">General</a>
+                                    <a class="scrollto" href="#general-section">General</a>
                                     <ul class="nav doc-sub-menu">
                                         <li><a class="scrollto" href="#extended-request-constants">Extended Request Constants</a></li>
                                         <li><a class="scrollto" href="#advanced-search-constants">Advanced Search Constants</a></li>
-                                        <li><a class="scrollto" href="#chaining-methods">Errors & Exceptions</a></li>
+                                        <li><a class="scrollto" href="#errors-and-exceptions">Errors & Exceptions</a></li>
                                     </ul><!--//nav-->
                                 </li>
                             </ul><!--//doc-menu-->
