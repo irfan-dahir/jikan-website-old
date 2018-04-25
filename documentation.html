@@ -240,8 +240,9 @@ $anime = $jikan->Anime(21, [EPISODES => 2, CHARACTERS_STAFF])->response;
 
                                         </code></pre>
                                     </div><!--//code-block-->
-                                    <p><b>Note:</b> If there's more than 100 episodes for an Anime, MyAnimeList paginates them. You can access that paginated list by their pages. Giving <code>EPISOEDS => 2</code> will make it fetch the page from the 2nd page, starting from the 101th episode</p>.
-                                    <p><b>Note 2:</b> The <code>episode_last_page</code> field will tell you how many episodes there are.</p>
+                                    <p><b>Note:</b> If an Anime has more than 100 episodes, then the <code>EPISODES</code> extended request will <u>only return the first 100</u>. But alongside, it will also return the <b>episode_last_page</b> key which holds the number of pages there are for the episodes list. You can access this key in <code>$jikan->response['episode_last_page']</code></p>
+
+                                    <p><b>Note 2:</b> You can get the second page of an episodes list by assigning an integer with the <code>EPISODES</code> constant. <code>$jikan->Anime(21, [EPISODES => 2])</code> will get the second page of the episodes, <u>starting from episode 101</u></p>
                                 </div><!--//section-block-->
 
 
@@ -447,12 +448,245 @@ $jikan->Search('Tate no Yuusha', MANGA, 2);
                                 <h2 class="section-title">Advanced Search</h2>
                                 <div id="search-method"  class="section-block">
                                     <p>Advanced Search introduces filters to your search results.</p> 
-                                    <p>It can be used by passing a <em>fourth</em> argument to the <b>Search</b> method as a <code>Jikan\Helper\SearchConfig</code> object.</p>
+                                    <p>It can be used by passing a <em>fourth</em> argument to the <b>Search</b> method as a <code>Jikan\Helper\SearchConfig</code> object.</p><br>
+
+                                    <p>Advanced search responses are stored in the same way as the basic results. The only difference is the type of items returned.</p>
+                                    <p>To get started, we need to call in a Helper Class which will store the configuration for the search.</p>
+                                    <p><code>$config = new Jikan\Helper\SearchConfig(ANIME);</code></p>
+                                    <p>The type argument needs to be passed to this. There are only 2 search responses that have advanced search available on MyAnimeList and they're <code>ANIME</code> and <code>MANGA</code>.</p>
+                                    <p><b>Note:</b> These methods are all optional</p> 
+                                    <p><b>Note 2:</b> These methods can be chained</p>
+                                    <br><br>
+                                        <h3>Type</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><code>ANIME</code> type</td>
+                                                        <td>Constant</td>
+                                                        <td><code>TYPE_TV</code> <code>TYPE_OVA</code> <code>TYPE_MOVIE</code> <code>TYPE_SPECIAL</code> <code>TYPE_ONA</code> <code>TYPE_MUSIC</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>MANGA</code> type</td>
+                                                        <td>Constant</td>
+                                                        <td><code>TYPE_MANGA</code> <code>TYPE_NOVEL</code> <code>TYPE_ONE_SHOT</code> <code>TYPE_DOUJINSHI</code> <code>TYPE_MANHWA</code> <code>TYPE_MANHUA</code> <code>TYPE_OEL</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                        <h3>Usage</h3>
+                                        <code>$config->setType(TYPE_MOVIE);</code><br><br>
+
+                                        <h3>Score</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Score (1-10)</td>
+                                                        <td>Integer</td>
+                                                        <td>Minimum score results</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                        <h3>Example</h3>
+                                        <code>$config->setScore(5);</code><br><br>
+
+                                        <h3>Rated</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Rated</td>
+                                                        <td>Constant</td>
+                                                        <td><code>G</code> <code>PG</code> <code>PG13</code> <code>R17</code> <code>R</code> <code>RX</code> <a href="#" class="btn btn-blue btn-sm">View Meaning</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                        <h3>Example</h3>
+                                        <code>$config->setRated(PG13);</code><br><br>
+
+                                        <h3>Status</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><code>ANIME</code> Status</td>
+                                                        <td>Constant</td>
+                                                        <td><code>AIRING</code> <code>FINISHED_AIRING</code> <code>TO_BE_AIRED</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>MANGA</code> Status</td>
+                                                        <td>Constant</td>
+                                                        <td><code>PUBLISHING</code> <code>FINISHED_PUBLISHING</code> <code>TO_BE_PUBLISHED</code></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                        <h3>Example</h3>
+                                        <code>$config->setStatus(AIRING);</code><br><br>
+
+                                        <h3>Start Date</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Day</td>
+                                                        <td>Integer</td>
+                                                        <td>Day it started</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Month</td>
+                                                        <td>Integer</td>
+                                                        <td>Month it started</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Year</td>
+                                                        <td>Integer</td>
+                                                        <td>Year it started</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                        <h3>Example</h3>
+                                        <code>$config->setStartDate(5, 10, 2004)</code><br><br>
+
+                                        <h3>End Date</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Day</td>
+                                                        <td>Integer</td>
+                                                        <td>Day it ended</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Month</td>
+                                                        <td>Integer</td>
+                                                        <td>Month it ended</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Year</td>
+                                                        <td>Integer</td>
+                                                        <td>Year it ended</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                        <h3>Example</h3>
+                                        <code>$config->setEndDate(5, 10, 2004)</code><br><br>
+
+                                        <h3>Genre</h3>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Genre</td>
+                                                        <td>Array/Constant</td>
+                                                        <td><a href="#" class="btn btn-blue">View Constants</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                        <h3>Example</h3>
                                     <div class="code-block">
                                         <pre><code>
-Docs WIP
+// You can set one
+$config->setGenre(ACTION);
+
+// Or one by one using chained methods
+$config->setGenre(ACTION)->setGenre(ADVENTURE)
+
+// Or even in bulk as an array
+$config->setGenre([ACTION, ADVENTURE])
                                         </code></pre>
                                     </div><!--//code-block-->
+
+                                        <h3>Genre Include</h3>
+                                        <p>The genre set by <code>setGenre</code> can be excluded or included from the search by this method.</p>
+                                        <p><p>Note:</p> This is by default set to <code>TRUE</code></p>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Genre Include</td>
+                                                        <td>Boolean</td>
+                                                        <td>Include or Exclude the Genres</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
+                                        <h3>Example</h3>
+                                    <div class="code-block">
+                                        <pre><code>
+// This will Include the results with these genre (default)
+$config->setGenreInclude(true); 
+
+// Exclude
+$config->setGenreInclude(false);
+                                        </code></pre>
+                                    </div><!--//code-block-->
+
+                                    <p>These are all the configurations! Now all you need to do is pass it as an argument.</p>
+
+                                    <code>$jikan->Search('Bleach', ANIME, 1, $config)</code>
                                 </div><!--//section-block-->
                             </section><!--//doc-section-->
 
