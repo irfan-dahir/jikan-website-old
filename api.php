@@ -10,7 +10,7 @@
 |
 */
 
-$app = require '../../api.jikan/bootstrap/app.php';
+$app = require '../api.jikan/bootstrap/app.php';
 
 /*
 |--------------------------------------------------------------------------
