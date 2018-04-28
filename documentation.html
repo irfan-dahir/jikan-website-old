@@ -692,16 +692,8 @@ $config->setGenreInclude(false);
 
                             <section id="seasonal-method" class="doc-section">
                                 <h2 class="section-title">Seasonal</h2>
-                                <div class="callout-block callout-danger">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-info-circle"></i>
-                                    </div><!--//icon-holder-->
-                                    <div class="content">
-                                        <h4 class="callout-title">Docs WIP</h4>
-                                        <p>I'm working on the documentation! Will be updated soon.</p>
-                                    </div><!--//content-->
-                                </div><!--//callout-block-->
                                 <div id="seasonal-method"  class="section-block">
+                                    <p>This method fetches seasonal anime</p>
                                     <!-- <h3 class="block-title">Basic Search</h3> -->
                                       <p><a href="#schema-search" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
                                       <p>This method parses from</p>
@@ -709,6 +701,7 @@ $config->setGenreInclude(false);
                                         <p><code>https://myanimelist.net/anime/season/{year}/{season}</code></p>
                                         <br>
                                       <h6>Parameter(s)</h6>
+                                        <p></p>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -719,14 +712,27 @@ $config->setGenreInclude(false);
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                    <tr>
+                                                        <td>Season</td>
+                                                        <td>Constant</td>
+                                                        <td><code>WINTER</code> <code>SPRING</code> <code>SUMMER</code> <code>FALL</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Year</td>
+                                                        <td>Integer</td>
+                                                        <td>The year you want to fetch anime from, e.g <code>2018</code></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
                                     <h3>Usage</h3>
                                     <div class="code-block">
                                         <pre><code>
-Docs WIP
+// Fetch anime from current season
+$jikan->Seasonal();
+
+// Fetch anime from Winter 2017
+$jikan->Seasonal(WINTER, 2017);
                                         </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
@@ -734,15 +740,7 @@ Docs WIP
 
                             <section id="schedule-method" class="doc-section">
                                 <h2 class="section-title">Schedule</h2>
-                                <div class="callout-block callout-danger">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-info-circle"></i>
-                                    </div><!--//icon-holder-->
-                                    <div class="content">
-                                        <h4 class="callout-title">Docs WIP</h4>
-                                        <p>I'm working on the documentation! Will be updated soon.</p>
-                                    </div><!--//content-->
-                                </div><!--//callout-block-->
+                                <p>Fetch anime schedule (current season) for throughout the week</p>
                                 <div id="schedule-method"  class="section-block">
                                     <!-- <h3 class="block-title">Basic Search</h3> -->
                                       <p><a href="#schema-search" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
@@ -750,24 +748,21 @@ Docs WIP
                                         <p><code>https://myanimelist.net/anime/season/schedule</code></p>
                                         <br>
                                       <h6>Parameter(s)</h6>
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Type</th>
-                                                        <th>Description</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-
-                                                </tbody>
-                                            </table>
-                                        </div><!--//table-responsive-->
+                                        <p><b>NONE</b></p>
                                     <h3>Usage</h3>
                                     <div class="code-block">
                                         <pre><code>
-Docs WIP
+// Fetch the schedule
+$jikan->Schedule();
+
+// This returns a key/value pair of day names with an array of 
+// the anime airing on that day as the value
+
+// For monday
+$jikan->response['monday'];
+
+// Sunday, and so on
+$jikan->response['sunday'];
                                         </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
@@ -775,15 +770,6 @@ Docs WIP
 
                             <section id="top-method" class="doc-section">
                                 <h2 class="section-title">Top</h2>
-                                <div class="callout-block callout-danger">
-                                    <div class="icon-holder">
-                                        <i class="fa fa-info-circle"></i>
-                                    </div><!--//icon-holder-->
-                                    <div class="content">
-                                        <h4 class="callout-title">Docs WIP</h4>
-                                        <p>I'm working on the documentation! Will be updated soon.</p>
-                                    </div><!--//content-->
-                                </div><!--//callout-block-->
                                 <div id="top-method"  class="section-block">
                                     <!-- <h3 class="block-title">Basic Search</h3> -->
                                       <p><a href="#schema-search" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
