@@ -1758,7 +1758,8 @@ $jikan->Top(MANGA, 1, TOP_FAVORITE);
                                         </div><!--//table-responsive-->
 
                                     <h2>Schema Example</h2>
-                                    <pre><code>
+                                    <button class="btn btn-blue btn-spoiler" data-enabled="false"><i class="fa fa-plus"></i> Show</button>
+                                    <pre style="display: none; height: 500px;"><br><code>
 // $jikan->Anime(1)->response;
 
 array (size=33)
@@ -2006,6 +2007,18 @@ $(document).ready(function() {
   $('pre code').each(function(i, block) {
     hljs.highlightBlock(block);
   });
+
+  $('.btn-spoiler').on('click', function() {
+    if ($('.btn-spoiler').attr('data-enabled') == "true") { // close
+        $('.btn-spoiler').html("<i class='fa fa-plus'></i> Show");
+        $('.btn-spoiler').next().slideUp();
+        $('.btn-spoiler').attr('data-enabled', 'false');
+    } else { // open
+        $('.btn-spoiler').html("<i class='fa fa-minus'></i> Hide");
+        $('.btn-spoiler').next().slideDown();
+        $('.btn-spoiler').attr('data-enabled', 'true');
+    }
+  })
 });
     </script>
     
