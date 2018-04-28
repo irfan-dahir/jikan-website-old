@@ -1565,8 +1565,197 @@ $jikan->Top(MANGA, 1, TOP_FAVORITE);
                                         <p>I'm working on the documentation! Will be updated soon.</p>
                                     </div><!--//content-->
                                 </div><!--//callout-block-->
+                                <div class="callout-block callout-info">
+                                    <div class="icon-holder">
+                                        <i class="fa fa-info-circle"></i>
+                                    </div><!--//icon-holder-->
+                                    <div class="content">
+                                        <h4 class="callout-title">Accessing Values</h4>
+                                        <p>These keys can be accessed in <code>$jikan->response</code></p>
+                                    </div><!--//content-->
+                                </div><!--//callout-block-->
                                 <div class="section-block">
-                                    <p></p>
+                                    <h2 id="schema-anime">Anime</h2>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Key</th>
+                                                        <th>Value Type</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><code>mal_id</code></td>
+                                                        <td>Integer</td>
+                                                        <td>ID associated with MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>link_canonical</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's Canonical link</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>title</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's Title</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>title_english</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's English title</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>title_japanese</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's Japanese title</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>title_synonyms</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's multiple titles (if any) seperated by a comma.
+                                                            <br><br>Returns <code>null</code> if there's none
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>image_url</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's image URL</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>type</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's type. e.g; <code>"TV"</code> <code>"Manga"</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>source</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's source. e.g; <code>"Manga"</code> <code>"Original"</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>episodes</code></td>
+                                                        <td>Integer</td>
+                                                        <td>Item's episode count</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>status</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's status. e.g; <code>"Airing"</code></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>airing</code></td>
+                                                        <td>Boolean</td>
+                                                        <td>Item's airing status</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>aired_string</code></td>
+                                                        <td>String</td>
+                                                        <td>Airing string parsed from Item's page</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>aired</code></td>
+                                                        <td>Array</td>
+                                                        <td>Associative keys of <code>from</code> and <code>to</code> which are alternative versions of <code>aired_string</code> in <b>ISO8601</b> format</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>duration</code></td>
+                                                        <td>String</td>
+                                                        <td>Item duration per episode</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>rating</code></td>
+                                                        <td>String</td>
+                                                        <td>Item age rating</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>score</code></td>
+                                                        <td>Decimal/Float</td>
+                                                        <td>Item's score on MyAnimeList upto 2 decimal places</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>scored_by</code></td>
+                                                        <td>Integer</td>
+                                                        <td>Number of people the item has been scored by</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>rank</code></td>
+                                                        <td>Integer</td>
+                                                        <td>Item rank on MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>popularity</code></td>
+                                                        <td>Integer</td>
+                                                        <td>Item popularity on MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>members</code></td>
+                                                        <td>Integer</td>
+                                                        <td>Item members on MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>favorites</code></td>
+                                                        <td>Integer</td>
+                                                        <td>Item favorites on MyAnimeList</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>synopsis</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's synopsis</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>background</code></td>
+                                                        <td>String</td>
+                                                        <td>Item's background info<br><br>Returns <code>null</code> for item that don't have any</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>premiered</code></td>
+                                                        <td>String</td>
+                                                        <td>Season and year the item premiered</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>broadcast</code></td>
+                                                        <td>String</td>
+                                                        <td>Item broadcast day and timings (usually JST)</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>related</code></td>
+                                                        <td>Array</td>
+                                                        <td>Item's related items (anime, manga, spin offs, etc)<br>Keyed associatively by relation type as String with numerically indexed child arrays containing related item's info.<br>Scroll down for schema examples<br><br>Returns as an empty array if there's none</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>producer</code></td>
+                                                        <td>Array</td>
+                                                        <td>Item's producers numerically indexed with array values.<br>Scroll down for schema examples<br><br>Returns as an empty array if there's none</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>licensor</code></td>
+                                                        <td>Array</td>
+                                                        <td>Item's licensors numerically indexed with array values. <br>Scroll down for schema examples<br><br>Returns as an empty array if there's none</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>studio</code></td>
+                                                        <td>Array</td>
+                                                        <td>Item's studio(s) numerically indexed with array values. <br>Scroll down for schema examples<br><br>Returns as an empty array if there's none</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>genre</code></td>
+                                                        <td>Array</td>
+                                                        <td>Item's genres numerically indexed with array values. <br>Scroll down for schema examples<br><br>Returns as an empty array if there's none</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>opening_theme</code></td>
+                                                        <td>Array</td>
+                                                        <td>Item's opening themes numerically indexed with string values. <br>Scroll down for schema examples<br><br>Returns as an empty array if there's none</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><code>ending_theme</code></td>
+                                                        <td>Array</td>
+                                                        <td>Item's ending themes numerically indexed with string values. <br>Scroll down for schema examples<br><br>Returns as an empty array if there's none</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div><!--//table-responsive-->
                                 </div>
                             </section><!--//doc-section-->
 
