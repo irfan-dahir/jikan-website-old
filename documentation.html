@@ -213,7 +213,7 @@ try {
                                                     </tr>
                                                     <tr>
                                                         <td>Extended Request(s)</td>
-                                                        <td>constant</td>
+                                                        <td>Constant</td>
                                                         <td><a href="#extended-request-anime-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
@@ -268,7 +268,7 @@ $anime = $jikan->Anime(21, [EPISODES => 2, CHARACTERS_STAFF])->response;
                                                     </tr>
                                                     <tr>
                                                         <td>Extended Request(s)</td>
-                                                        <td>constant</td>
+                                                        <td>Constant</td>
                                                         <td><a href="#extended-request-manga-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
@@ -320,7 +320,7 @@ $manga = $jikan->Manga(1, [CHARACTERS, NEWS, STATS, PICTURES, FORUM, MORE_INFO])
                                                     </tr>
                                                     <tr>
                                                         <td>Extended Request(s)</td>
-                                                        <td>constant</td>
+                                                        <td>Constant</td>
                                                         <td><a href="#extended-request-character-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
@@ -360,7 +360,7 @@ $character = $jikan->Character(1, PICTURES)->response;
                                                     </tr>
                                                     <tr>
                                                         <td>Extended Request(s)</td>
-                                                        <td>constant</td>
+                                                        <td>Constant</td>
                                                         <td><a href="#extended-request-person-constant" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
@@ -402,7 +402,7 @@ $person = $jikan->Person(1, PICTURES)->response;
                                                 <tbody>
                                                     <tr>
                                                         <td><code>type</code></td>
-                                                        <td>constant</td>
+                                                        <td>Constant</td>
                                                         <td><code>ANIME</code> <code>MANGA</code> <code>CHARACTER</code> <code>PERSON</code> <code>PEOPLE</code> (alias)</td>
                                                     </tr>
                                                     <tr>
@@ -520,7 +520,7 @@ $jikan->Search('Tate no Yuusha', MANGA, 2);
                                                     <tr>
                                                         <td>Rated</td>
                                                         <td>Constant</td>
-                                                        <td><code>G</code> <code>PG</code> <code>PG13</code> <code>R17</code> <code>R</code> <code>RX</code> <a href="#" class="btn btn-blue btn-sm">View Meaning</a></td>
+                                                        <td><code>G</code> <code>PG</code> <code>PG13</code> <code>R17</code> <code>R</code> <code>RX</code> <br><br><a href="#advanced-search-rating-constants" class="btn btn-primary"><i class="fa fa-angle-right"></i> View Meaning</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -633,7 +633,7 @@ $jikan->Search('Tate no Yuusha', MANGA, 2);
                                                     <tr>
                                                         <td>Genre</td>
                                                         <td>Array/Constant</td>
-                                                        <td><a href="#" class="btn btn-blue">View Constants</a></td>
+                                                        <td><a href="#advanced-search-genre-constants" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -802,7 +802,7 @@ $jikan->response['sunday'];
                                                     <tr>
                                                         <td>Sub Type (optional)</td>
                                                         <td>Constant</td>
-                                                        <td><code>ANIME</code> and <code>MANGA</code> have their own and some common subtypes. <br><br><a href="#" class="btn btn-blue">View Constants</a></td>
+                                                        <td><code>ANIME</code> and <code>MANGA</code> have their own and some common subtypes. <br><br><a href="#top-request-contants" class="btn btn-primary"><i class="fa fa-angle-right"></i> Available Constants</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -855,7 +855,7 @@ $jikan->Top(MANGA, 1, TOP_FAVORITE);
                                     <p>You can request multiple data from multiple pages using <b>Extend Constants</b></p>
                                     <p>These are extended data responses to the <b>anime</b>, <b>manga</b>, <b>character</b> and <b>person</b> methods.</p>
                                     <br><br>
-                                    <h3>Anime</h3>
+                                    <h3 id="extended-request-anime-constant">Anime</h3>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -916,7 +916,7 @@ $jikan->Top(MANGA, 1, TOP_FAVORITE);
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
-                                   <h3>Manga</h3>
+                                   <h3 id="extended-request-manga-constant">Manga</h3>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -969,7 +969,7 @@ $jikan->Top(MANGA, 1, TOP_FAVORITE);
                                             </table>
                                         </div><!--//table-responsive-->
 
-                                   <h3>Character</h3>
+                                   <h3 id="extended-request-character-constant">Character</h3>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
@@ -988,7 +988,7 @@ $jikan->Top(MANGA, 1, TOP_FAVORITE);
                                             </table>
                                         </div><!--//table-responsive-->
 
-                                   <h3>Person</h3>
+                                   <h3 id="extended-request-person-constant">Person</h3>
                                         <div class="table-responsive">
                                             <table class="table table-bordered">
                                                 <thead>
