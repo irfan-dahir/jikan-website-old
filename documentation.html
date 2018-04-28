@@ -771,7 +771,8 @@ $jikan->response['sunday'];
                             <section id="top-method" class="doc-section">
                                 <h2 class="section-title">Top</h2>
                                 <div id="top-method"  class="section-block">
-                                    <!-- <h3 class="block-title">Basic Search</h3> -->
+                                    <p>These method fetches the Top anime/manga on MyAnimeList</p>
+                                    <p>Pagination is supported!</p>
                                       <p><a href="#schema-search" class="btn btn-blue"><i class="fa fa-book"></i> View Schema</a></p><br>
                                       <p>This method parses from</p>
                                         <p><code>https://myanimelist.net/topanime.php</code></p>
@@ -788,14 +789,58 @@ $jikan->response['sunday'];
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
+                                                    <tr>
+                                                        <th>Type</th>
+                                                        <th>Constant</th>
+                                                        <th><code>ANIME</code> <code>MANGA</code></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Page (optional)</td>
+                                                        <td>Integer</td>
+                                                        <td>Default is page 1</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Sub Type (optional)</td>
+                                                        <td>Constant</td>
+                                                        <td><code>ANIME</code> and <code>MANGA</code> have their own and some common subtypes. <br><br><a href="#" class="btn btn-blue">View Constants</a></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div><!--//table-responsive-->
                                     <h3>Usage</h3>
                                     <div class="code-block">
                                         <pre><code>
-Docs WIP
+// Fetch Top Anime
+$jikan->Top(ANIME);
+
+// Fetch Top Upcoming anime
+$jikan->Top(ANIME, 1, TOP_UPCOMING);
+
+// Fetch Top airing anime
+$jikan->Top(ANIME, 1, TOP_AIRING);
+
+// Fetch Top anime movies
+$jikan->Top(ANIME, 1, TOP_MOVIE);
+
+// Fetch Top anime by popularity
+$jikan->Top(ANIME, 1, TOP_POPULARITY);
+
+// Fetch Top Manga from page 2
+$jikan->Top(MANGA, 2);
+
+// Fetch Top Novels
+$jikan->Top(MANGA, 1, TOP_NOVEL);
+
+// Fetch Top MANHWA
+$jikan->Top(MANGA, 1, TOP_MANHWA);
+
+// Fetch Top Manga ONLY (not mixed with novels, manhwas, etc)
+$jikan->Top(MANGA, 1, TOP_MANGA);
+
+// Fetch Top manga by favoritism
+$jikan->Top(MANGA, 1, TOP_FAVORITE);
+
+// There's a lot more sub-type constants!
                                         </code></pre>
                                     </div><!--//code-block-->
                                 </div><!--//section-block-->
