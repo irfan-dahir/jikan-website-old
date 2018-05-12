@@ -4,11 +4,11 @@ DirectoryIndex index.html
 
 RewriteEngine On
 
-RewriteCond %{HTTP_HOST} ^api.jikan.me
-RewriteRule ^(.*)$ api.php?$1 [L,NC,QSA]
+##RewriteCond %{HTTP_HOST} ^api.jikan.local
+##RewriteRule ^(.*)$ api.php?$1 [L,NC,QSA]
 
-RewriteCond %{HTTP_HOST} ^api.jikan.moe
-RewriteRule ^(.*)$ api.php?$1 [L,NC,QSA]
+##RewriteCond %{HTTP_HOST} ^api.jikan.local
+##RewriteRule ^(.*)$ api.php?$1 [L,NC,QSA]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
