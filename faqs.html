@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->  
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
 <head>
     <title>Jikan - FAQs</title>
     <!-- Meta -->
@@ -33,13 +36,14 @@
     <meta name="og:locale" content="en_US">
     <meta name="og:type" content="website">
 
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
-    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
-    
+
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -58,18 +62,21 @@
     <meta name="msapplication-TileImage" content="assets/images/favicon/mstile-144x144.png">
     <meta name="msapplication-config" content="assets/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-</head> 
+</head>
+
 <body class="body-purple">
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-99574439-1', 'auto');
-  ga('send', 'pageview');
+        ga('create', 'UA-99574439-1', 'auto');
+        ga('send', 'pageview');
 
-</script>
+    </script>
     <div class="page-wrapper">
         <!-- ******Header****** -->
         <header id="header" class="header">
@@ -81,126 +88,187 @@
                             <span class="text-highlight">Jikan</span><span class="text-bold">Docs</span>
                         </a>
                     </h1>
-                </div><!--//branding-->
+                </div>
+                <!--//branding-->
                 <ol class="breadcrumb">
                     <li><a href="https://jikan.moe/">Home</a></li>
                     <li class="active">FAQs</li>
                 </ol>
-            </div><!--//container-->
-        </header><!--//header-->        
+            </div>
+            <!--//container-->
+        </header>
+        <!--//header-->
         <div class="doc-wrapper">
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><span aria-hidden="true" class="icon icon_lifesaver"></span> FAQs</h1>
                     <!-- <div class="meta"><i class="fa fa-clock-o"></i> Last updated: May 19th, 2017</div> -->
-                </div><!--//doc-header-->
+                </div>
+                <!--//doc-header-->
                 <div class="doc-body">
                     <div class="doc-content">
                         <div class="content-inner">
                             <section id="general" class="doc-section">
                                 <h2 class="section-title">General</h2>
                                 <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> Are there any limits to the requests?</h3>
-                                    <div class="answer">You can make <code>5,000</code> <b>uncached</b> requests per day. Cached requests don't count!</div>
-                                </div><!--//section-block-->
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> Are there any limits to
+                                        the requests?</h3>
+                                    <div class="answer">You're only throttled with <strong>30 requests/minute</strong>
+                                        and <strong>2 requests/second</strong> for uncached requests. <strong>Cached
+                                            requests don't throttle you</strong>.
+                                        <br>
+                                        <a href="https://jikan.docs.apiary.io/introduction/information/rate-limiting"
+                                            target="_blank">Read More</a>
+
+                                    </div>
+                                </div>
+                                <!--//section-block-->
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> How does Jikan work?</h3>
-                                    <div class="answer">Jikan works by scraping pages from MyAnimeList to parse the data you need.</div>
-                                </div><!--//section-block-->
+                                    <div class="answer">Jikan works by scraping pages from MyAnimeList to parse the
+                                        data you need.</div>
+                                </div>
+                                <!--//section-block-->
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> Is this open source?</h3>
-                                    <div class="answer">Yes! From the source, to the REST API, to this website itself; everything is available on <a href="https://github.com/jikan-me" target="_blank">GitHub</a>.</div>
-                                </div><!--//section-block-->
+                                    <div class="answer">Yes! From the source, to the REST API, to this website itself;
+                                        everything is available on <a href="https://github.com/jikan-me" target="_blank">GitHub</a>.</div>
+                                </div>
+                                <!--//section-block-->
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> Is this service free?</h3>
                                     <div class="answer"><b>100%</b>.</div>
-                                </div><!--//section-block-->
+                                </div>
+                                <!--//section-block-->
                                 <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> I've made a wrapper for Jikan!</h3>
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> I've made a wrapper for
+                                        Jikan!</h3>
                                     <div class="answer">That's great! Let me know and I'll add it everywhere.</div>
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
-                            
+                                </div>
+                                <!--//section-block-->
+                            </section>
+                            <!--//doc-section-->
+
                             <section id="features" class="doc-section">
                                 <h2 class="section-title">Features</h2>
                                 <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> What differs Jikan from the Official API?</h3>
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> What differs Jikan from
+                                        the Official API?</h3>
                                     <div class="answer">
-                                    <p>Jikan covers what the official API lacks. It's much simpler to use, requires no authentication and returns data in JSON. :)</p>
-                                    </div><!--//anwser-->
-                                </div><!--//section-block-->
+                                        <p>Jikan covers what the official API lacks. It's much simpler to use, requires
+                                            no authentication and returns data in JSON. :)</p>
+                                    </div>
+                                    <!--//anwser-->
+                                </div>
+                                <!--//section-block-->
                                 <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> What can I get through Jikan?</h3>
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> What can I get through
+                                        Jikan?</h3>
                                     <div class="answer">
-                                    <p>A whole lot. Refer to the <b><a href="https://github.com/jikan-me/jikan/blob/master/readme.md" target="_blank">Readme</a></b> file.</p>
-                                    </div><!--//anwser-->
-                                </div><!--//section-block-->
+                                        <p>A whole lot. Refer to the <b><a href="https://github.com/jikan-me/jikan/blob/master/readme.md"
+                                                    target="_blank">Readme</a></b> file.</p>
+                                    </div>
+                                    <!--//anwser-->
+                                </div>
+                                <!--//section-block-->
                                 <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> Can you add < insert added functionality > to Jikan?</h3>
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> Can you add < insert
+                                            added functionality> to Jikan?</h3>
                                     <div class="answer">
-                                    <p>Open an issue on the <b><a href="https://github.com/irfan-dahir/jikan/issues" target="_blank">GitHub</a></b> repo with the feature you'd like to see added.</p>
-                                    </div><!--//anwser-->
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
-                            
-                            
+                                        <p>Open an issue on the <b><a href="https://github.com/irfan-dahir/jikan/issues"
+                                                    target="_blank">GitHub</a></b> repo with the feature you'd like to
+                                            see added.</p>
+                                    </div>
+                                    <!--//anwser-->
+                                </div>
+                                <!--//section-block-->
+                            </section>
+                            <!--//doc-section-->
+
+
                             <section id="support" class="doc-section">
                                 <h2 class="section-title">Support</h2>
                                 <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> I have a problem using this!</h3>
-                                    <div class="answer">Whether you're talking about the REST API or the source, feel free to drop me an <a href="mailto:irfan@jikan.moe">email</a> or <a href="https://github.com/jikan-me/jikan/issues" target="_blank">open an issue</a> and I'll gladly help you out!</div>
-                                </div><!--//section-block-->
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> I have a problem using
+                                        this!</h3>
+                                    <div class="answer">Whether you're talking about the REST API or the source, feel
+                                        free to join our <a href="https://discord.gg/zh4NsjV" target="_blank">Discord
+                                            Server</a> or <a href="https://github.com/jikan-me/jikan/issues" target="_blank">open
+                                            an issue</a> and I'll gladly help you out!</div>
+                                </div>
+                                <!--//section-block-->
                                 <div class="section-block">
                                     <h3 class="question"><i class="fa fa-question-circle"></i> I found a bug!</h3>
-                                    <div class="answer">Please open a <a href="https://github.com/irfan-dahir/jikan/issues" target="_blank">new issue</a> with details of the problem and how it occured. I'll fix it asap.</div>
-                                </div><!--//section-block-->
+                                    <div class="answer">Please open a <a href="https://github.com/irfan-dahir/jikan/issues"
+                                            target="_blank">new issue</a> with details of the problem and how it
+                                        occured. I'll fix it asap.</div>
+                                </div>
+                                <!--//section-block-->
                                 <div class="section-block">
-                                    <h3 class="question"><i class="fa fa-question-circle"></i> The REST API isn't working!</h3>
+                                    <h3 class="question"><i class="fa fa-question-circle"></i> The REST API isn't
+                                        working!</h3>
                                     <div class="answer">
-                                        <p>Uh-oh. <a href="https://github.com/jikan-me/jikan/issues" target="_blank">Open an issue</a> or <a href="mailto:irfan@jikan.moe">email</a> me and I'll resolve it ASAP.</p>
+                                        <p>Uh-oh. <a href="https://github.com/jikan-me/jikan/issues" target="_blank">Open
+                                                an issue</a> and I'll
+                                            resolve it ASAP.</p>
                                     </div>
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
-                                                        
-                        </div><!--//content-inner-->
-                    </div><!--//doc-content-->
+                                </div>
+                                <!--//section-block-->
+                            </section>
+                            <!--//doc-section-->
+
+                        </div>
+                        <!--//content-inner-->
+                    </div>
+                    <!--//doc-content-->
                     <div class="doc-sidebar">
                         <nav id="doc-nav">
                             <ul id="doc-menu" class="nav doc-menu hidden-xs" data-spy="affix">
                                 <li><a class="scrollto" href="#general">General</a></li>
                                 <li><a class="scrollto" href="#features">Features</a></li>
                                 <li><a class="scrollto" href="#support">Support</a></li>
-                            </ul><!--//doc-menu-->
+                            </ul>
+                            <!--//doc-menu-->
                         </nav>
-                    </div><!--//doc-sidebar-->
-                </div><!--//doc-body-->              
-            </div><!--//container-->
-        </div><!--//doc-wrapper-->
+                    </div>
+                    <!--//doc-sidebar-->
+                </div>
+                <!--//doc-body-->
+            </div>
+            <!--//container-->
+        </div>
+        <!--//doc-wrapper-->
 
-        
-    </div><!--//page-wrapper-->
-    
+
+    </div>
+    <!--//page-wrapper-->
+
     <footer class="footer text-center">
         <div style="margin:0 2em;">
             <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
             <small class="copyright">
-                <span class="pull-left">Hosted by <a href="https://twitter.com/assintates/" target="_blank">Hibiki</a> - <i class="fa fa-copyright"></i> Jikan.me <a href="https://twitter.com/IrfanDahir" target="_blank">#irfan</a> 2017-2018</span>
-                <span class="pull-right">Theme by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a></span>
+                <span class="pull-left">Hosted by <a href="https://twitter.com/assintates/" target="_blank">Hibiki</a>
+                    - <i class="fa fa-copyright"></i> Jikan.me <a href="https://twitter.com/IrfanDahir" target="_blank">#irfan</a>
+                    2017-2018</span>
+                <span class="pull-right">Theme by <a href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying
+                        Riley</a></span>
             </small>
-            
-        </div><!--//container-->
-    </footer><!--//footer-->
-    
-     
-    <!-- Main Javascript -->          
+
+        </div>
+        <!--//container-->
+    </footer>
+    <!--//footer-->
+
+
+    <!-- Main Javascript -->
     <script type="text/javascript" src="assets/plugins/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
-    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>  
-    <script type="text/javascript" src="assets/plugins/lightbox/dist/ekko-lightbox.min.js"></script>                                                                
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/lightbox/dist/ekko-lightbox.min.js"></script>
     <script type="text/javascript" src="assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-    
-</body>
-</html> 
 
+</body>
+
+</html>
